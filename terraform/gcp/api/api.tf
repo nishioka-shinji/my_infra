@@ -1,6 +1,7 @@
 locals {
   enable_apis = [
-    "container.googleapis.com" # Kubernetes Engine API
+    "container.googleapis.com", # Kubernetes Engine API
+    "gmail.googleapis.com"      # Gmail API
   ]
 }
 

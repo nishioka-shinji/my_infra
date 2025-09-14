@@ -15,4 +15,8 @@ resource "google_container_cluster" "primary" {
     cluster_secondary_range_name  = local.secondary_ranges_map["pods-range"].range_name
     services_secondary_range_name = local.secondary_ranges_map["services-range"].range_name
   }
+
+  workload_identity_config {
+    workload_pool = "${data.google_client_config.default.project}.svc.id.goog"
+  }
 }

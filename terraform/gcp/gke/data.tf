@@ -1,3 +1,5 @@
+data "google_client_config" "default" {}
+
 data "terraform_remote_state" "network" {
   backend = "gcs"
   config = {

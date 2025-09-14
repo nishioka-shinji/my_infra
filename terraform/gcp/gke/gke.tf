@@ -7,6 +7,7 @@ locals {
 resource "google_container_cluster" "primary" {
   name = "my-autopilot-cluster"
   enable_autopilot = true
+  deletion_protection = false
 
   network    = data.terraform_remote_state.network.outputs.network.name
   subnetwork = data.terraform_remote_state.network.outputs.subnet.name

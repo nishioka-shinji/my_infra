@@ -6,6 +6,11 @@ terraform {
       version = "7.2.0"
     }
   }
+
+  backend "gcs" {
+    bucket  = "shinji-nishioka-test-terraform-state"
+    prefix  = "terraform/gcp/cloud_storage/terraform.tfstate"
+  }
 }
 
 provider "google" {

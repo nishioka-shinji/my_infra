@@ -5,8 +5,3 @@ data "terraform_remote_state" "network" {
     prefix  = "terraform/gcp/01-network"
   }
 }
-
-provider "google" {
-  project = "shinji-nishioka-test"
-  region  = "asia-northeast2"
-}

@@ -1,3 +1,9 @@
+locals {
+  secondary_ranges_map = {
+    for range in data.terraform_remote_state.network.outputs.subnet.secondary_ip_range : range.range_name => range
+  }
+}
+
 resource "google_container_cluster" "primary" {
   name = "my-autopilot-cluster"
   enable_autopilot = true
@@ -5,7 +11,7 @@ resource "google_container_cluster" "primary" {
   network    = data.terraform_remote_state.network.outputs.network.name
   subnetwork = data.terraform_remote_state.network.outputs.subnet.name
   ip_allocation_policy {
-    cluster_secondary_range_name  = "pods-range"
-    services_secondary_range_name = "services-range"
+    cluster_secondary_range_name  = local.secondary_ranges_map["pods-range"].range_name
+    services_secondary_range_name = local.secondary_ranges_map["services-range"].range_name
   }
 }

@@ -9,7 +9,7 @@ terraform {
 
   backend "gcs" {
     bucket  = "shinji-nishioka-test-terraform-state"
-    prefix  = "terraform/gcp/cloud_storage/terraform.tfstate"
+    prefix  = "terraform/gcp/cloud_storage"
   }
 }
 

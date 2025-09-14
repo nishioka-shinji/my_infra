@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: .*.yaml$
+    encrypted_regex: ^(data|stringData)$
+    gcp_kms: projects/shinji-nishioka-test/locations/asia-northeast2/keyRings/sops/cryptoKeys/sops-key

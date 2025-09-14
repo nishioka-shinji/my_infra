@@ -18,14 +18,6 @@ resource "google_kms_crypto_key_iam_member" "sops_user" {
   member        = "user:s61nov11.shinji.nishioka@gmail.com"
 }
 
-data "terraform_remote_state" "iam" {
-  backend = "gcs"
-  config = {
-    bucket = "shinji-nishioka-test-terraform-state"
-    prefix = "terraform/gcp/02-iam"
-  }
-}
-
 resource "google_kms_crypto_key_iam_member" "flux_sops_decryptor" {
   crypto_key_id = google_kms_crypto_key.sops_key.id
   role          = "roles/cloudkms.cryptoKeyDecrypter"

@@ -8,8 +8,8 @@ terraform {
   }
 
   backend "gcs" {
-    bucket  = "shinji-nishioka-test-terraform-state"
-    prefix  = "terraform/gcp/gke"
+    bucket = "shinji-nishioka-test-terraform-state"
+    prefix = "terraform/gcp/gke"
   }
 }
 

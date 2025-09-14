@@ -9,7 +9,7 @@ terraform {
 
   backend "gcs" {
     bucket = "shinji-nishioka-test-terraform-state"
-    prefix = "terraform/gcp/kms"
+    prefix = "terraform/gcp/03-iam"
   }
 }
 

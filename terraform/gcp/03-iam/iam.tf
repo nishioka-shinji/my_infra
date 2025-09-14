@@ -2,7 +2,7 @@ data "terraform_remote_state" "kms" {
   backend = "gcs"
   config = {
     bucket = "shinji-nishioka-test-terraform-state"
-    prefix = "terraform/gcp/kms"
+    prefix = "terraform/gcp/02-kms"
   }
 }
 

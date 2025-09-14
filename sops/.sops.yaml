@@ -1,4 +1,6 @@
 creation_rules:
   - path_regex: .*.yaml$
     encrypted_regex: ^(data|stringData)$
+    # This GCP KMS key is created by Terraform.
+    # See terraform/gcp/kms/kms.tf (google_kms_key_ring.sops, google_kms_crypto_key.sops_key)
     gcp_kms: projects/shinji-nishioka-test/locations/asia-northeast2/keyRings/sops/cryptoKeys/sops-key

@@ -1,3 +1,9 @@
+provider "google" {
+  project = "shinji-nishioka-test"
+}
+
+data "google_project" "project" {}
+
 data "terraform_remote_state" "iam" {
   backend = "gcs"
   config = {

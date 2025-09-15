@@ -26,4 +26,4 @@ spec:
     kind: GitRepository
     name: flux-system
   decryption:
-    provider: gcpkms
+    provider: sops

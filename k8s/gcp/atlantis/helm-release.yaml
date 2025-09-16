@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: atlantis
   values:
-    github:
-      appId: "1950417"
+    githubApp:
+      id: "1950417"
     vcsSecretName: atlantis-github-secret
     orgAllowlist: "github.com/nishioka-shinji/*"

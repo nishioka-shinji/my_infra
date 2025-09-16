@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: atlantis
+  namespace: atlantis
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: atlantis
+      version: "5.18.2"
+      sourceRef:
+        kind: HelmRepository
+        name: atlantis
+  values:
+    github:
+      appId: "1950417"
+    vcsSecretName: atlantis-github-secret
+    orgAllowlist: "github.com/nishioka-shinji/*"

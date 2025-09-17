@@ -15,3 +15,13 @@ patches:
       kind: ServiceAccount
       name: kustomize-controller
       namespace: flux-system
+  - patch: |-
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              cloud.google.com/gke-spot: "true"
+    target:
+      kind: Deployment
+      name: ".*"
+      namespace: flux-system

@@ -25,3 +25,23 @@ Terraformのコードを記述する際は、以下の規約に従ってくだ�
 *   **テスト**: 変更を加えた後は、関連するテスト（統合テスト、ユニットテストなど）を実行して、既存の機能に影響がないことを確認してください。
 *   **機密情報**: APIキーやパスワードなどの機密情報をコードにハードコードしないでください。
 *   **プランの確認**: `terraform apply`を実行する前に、必ず`terraform plan`の結果を確認し、意図しない変更が含まれていないことを確認してください。
+
+## ワークフロー自動化
+
+特定のキーワードに応じて、以下の操作を自動で実行してください。
+
+### GKEの起動・停止
+
+-   **キーワード**: `GKEを起動してください`
+-   **アクション**: 以下の内容でPull Requestを作成してください。
+    -   **ファイル**: `k8s/gcp/atlantis/helm-release.yaml`
+    -   **変更点**:
+        -   `spec.values.ingress.enabled`: `true`
+        -   `spec.values.replicaCount`: `1`
+
+-   **キーワード**: `GKEを停止してください`
+-   **アクション**: 以下の内容でPull Requestを作成してください。
+    -   **ファイル**: `k8s/gcp/atlantis/helm-release.yaml`
+    -   **変更点**:
+        -   `spec.values.ingress.enabled`: `false`
+        -   `spec.values.replicaCount`: `0`

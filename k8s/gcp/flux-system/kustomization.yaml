@@ -23,5 +23,35 @@ patches:
               cloud.google.com/gke-spot: "true"
     target:
       kind: Deployment
-      name: ".*"
+      name: source-controller
+      namespace: flux-system
+  - patch: |-
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              cloud.google.com/gke-spot: "true"
+    target:
+      kind: Deployment
+      name: kustomize-controller
+      namespace: flux-system
+  - patch: |-
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              cloud.google.com/gke-spot: "true"
+    target:
+      kind: Deployment
+      name: helm-controller
+      namespace: flux-system
+  - patch: |-
+      spec:
+        template:
+          spec:
+            nodeSelector:
+              cloud.google.com/gke-spot: "true"
+    target:
+      kind: Deployment
+      name: notification-controller
       namespace: flux-system

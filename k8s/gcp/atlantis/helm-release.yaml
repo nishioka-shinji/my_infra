@@ -13,6 +13,9 @@ spec:
         kind: HelmRepository
         name: atlantis
   values:
+    ingress:
+      enabled: false
+    replicaCount: 0
     nodeSelector:
       cloud.google.com/gke-spot: "true"
     githubApp:

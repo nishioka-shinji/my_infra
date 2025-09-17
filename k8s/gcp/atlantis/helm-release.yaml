@@ -13,6 +13,8 @@ spec:
         kind: HelmRepository
         name: atlantis
   values:
+    nodeSelector:
+      cloud.google.com/gke-spot: "true"
     githubApp:
       id: "1950417"
     vcsSecretName: atlantis-github-secret

@@ -13,10 +13,10 @@
 
 ### Terraform
 
-インフラストラクチャの変更を適用するには：
+インフラストラクチャの変更を適用するには、対象クラスタのディレクトリに移動して実行します。
 
 ```bash
-cd terraform/
+cd clusters/production/infrastructure/terraform
 terraform init
 terraform plan
 terraform apply
@@ -24,28 +24,38 @@ terraform apply
 
 ### Kubernetes (Flux GitOps)
 
-このリポジトリのKubernetesマニフェストは、FluxによるGitOpsワークフローを通じてクラスタに自動的に同期されます。
+このリポジトリのKubernetesマニフェストは、FluxによってGitOpsワークフローを通じてクラスタに自動的に同期されます。
 
-`k8s`ディレクトリ内のマニフェストファイルを変更し、Gitリポジトリにプッシュすることで、変更が自動的に適用されます。手動での`kubectl apply`は不要です。
+`clusters/production/apps`ディレクトリ配下のマニフェストファイルを変更し、Gitリポジトリにプッシュすることで、変更が自動的に適用されます。
 
 ### sops
 
-暗号化されたファイルを編集するには：
+暗号化されたSecretファイルを編集するには、`sops`コマンドを使用します。
 
 ```bash
-sops sops/secrets.yaml
+sops clusters/production/apps/secrets/my-app-secrets.sops.yaml
 ```
 
 ## ディレクトリ構成
 
+より現実的なGitOpsのディレクトリ構成例を以下に示します。
+
 ```
 .
 ├── README.md
-├── k8s
-│   └── service.yml
-├── sops
-│   └── secrets.yaml
-└── terraform
-    ├── main.tf
-    └── variables.tf
+└── clusters
+    └── production                      # 環境（クラスタ）ごと
+        ├── flux-system                 # FluxCDのコアコンポーネント
+        │   ├── gotk-components.yaml
+        │   └── gotk-sync.yaml
+        ├── infrastructure              # Terraformによるインフラ定義
+        │   └── terraform
+        │       ├── main.tf
+        │       └── variables.tf
+        └── apps                        # アプリケーションのマニフェスト
+            ├── base
+            │   └── my-app
+            │       └── release.yaml
+            └── secrets
+                └── my-app-secrets.sops.yaml
 ```

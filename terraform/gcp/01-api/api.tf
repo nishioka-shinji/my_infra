@@ -1,5 +1,6 @@
 locals {
   enable_apis = [
+    "certificatemanager.googleapis.com",
     "cloudkms.googleapis.com",    # Cloud Key Management Service API
     "container.googleapis.com",   # Kubernetes Engine API
     "gmail.googleapis.com",       # Gmail API

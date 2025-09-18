@@ -9,6 +9,10 @@ resource "google_container_cluster" "primary" {
   enable_autopilot    = true
   deletion_protection = false
 
+  monitoring_config {
+    enable_components = ["SYSTEM_COMPONENTS"]
+  }
+
   network    = data.terraform_remote_state.network.outputs.network.name
   subnetwork = data.terraform_remote_state.network.outputs.subnet.name
   ip_allocation_policy {

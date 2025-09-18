@@ -5,4 +5,4 @@ metadata:
   namespace: gateway-infra
 spec:
   domains:
-    - atlantis.nishiokatest.xyz
+    - "*.nishiokatest.xyz"

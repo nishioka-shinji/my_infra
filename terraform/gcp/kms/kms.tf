@@ -21,5 +21,5 @@ resource "google_kms_crypto_key_iam_member" "sops_user" {
 resource "google_kms_crypto_key_iam_member" "flux_sops_decryptor" {
   crypto_key_id = google_kms_crypto_key.sops_key.id
   role          = "roles/cloudkms.cryptoKeyDecrypter"
-  member        = "principal://iam.googleapis.com/projects/${data.google_project.project.number}/locations/global/workloadIdentityPools/${data.google_project.project.project_id}.svc.id.goog/subject/ns/flux-system/sa/kustomize-controller"
+  member        = "serviceAccount:${data.terraform_remote_state.iam.outputs.flux_sops_decryptor_email}"
 }

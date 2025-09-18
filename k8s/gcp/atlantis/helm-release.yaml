@@ -14,7 +14,7 @@ spec:
         name: atlantis
   values:
     ingress:
-      enabled: true
+      enabled: false
     replicaCount: 1
     nodeSelector:
       cloud.google.com/gke-spot: "true"

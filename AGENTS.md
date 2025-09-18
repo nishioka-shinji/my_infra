@@ -32,14 +32,13 @@ Terraformのコードを記述する際は、以下の規約に従ってくだ�
 
 ### GKEの起動・停止
 
--   **キーワード**: `GKEを起動してください`
+-   **キーワード**: `!gke_start`
 -   **アクション**: 以下の内容でPull Requestを作成してください。
     -   **ファイル**: `k8s/gcp/atlantis/helm-release.yaml`
     -   **変更点**:
-        -   `spec.values.ingress.enabled`: `true`
         -   `spec.values.replicaCount`: `1`
 
--   **キーワード**: `GKEを停止してください`
+-   **キーワード**: `!gke_stop`
 -   **アクション**: 以下の内容でPull Requestを作成してください。
     -   **ファイル**: `k8s/gcp/atlantis/helm-release.yaml`
     -   **変更点**:

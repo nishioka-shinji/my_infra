@@ -6,6 +6,7 @@
 
 *   [Terraform](https://www.terraform.io/downloads.html) v1.0.0 以降
 *   [FluxCD](https://fluxcd.io/)
+*   [sops](https://github.com/mozilla/sops)
 *   設定済みのAWS認証情報
 
 ## 利用方法
@@ -27,6 +28,14 @@ terraform apply
 
 `k8s`ディレクトリ内のマニフェストファイルを変更し、Gitリポジトリにプッシュすることで、変更が自動的に適用されます。手動での`kubectl apply`は不要です。
 
+### sops
+
+暗号化されたファイルを編集するには：
+
+```bash
+sops sops/secrets.yaml
+```
+
 ## ディレクトリ構成
 
 ```
@@ -34,11 +43,9 @@ terraform apply
 ├── README.md
 ├── k8s
 │   └── service.yml
+├── sops
+│   └── secrets.yaml
 └── terraform
     ├── main.tf
     └── variables.tf
 ```
-
-## コントリビューション
-
-詳細は`CONTRIBUTING.md`を参照してください。

@@ -42,5 +42,4 @@ Terraformのコードを記述する際は、以下の規約に従ってくだ�
 -   **アクション**: 以下の内容でPull Requestを作成してください。
     -   **ファイル**: `k8s/gcp/atlantis/helm-release.yaml`
     -   **変更点**:
-        -   `spec.values.ingress.enabled`: `false`
         -   `spec.values.replicaCount`: `0`

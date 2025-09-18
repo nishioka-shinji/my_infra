@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: atlantis-nishiokatest-xyz
+  namespace: gateway-infra
+spec:
+  domains:
+    - atlantis.nishiokatest.xyz

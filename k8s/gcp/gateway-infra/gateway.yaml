@@ -1,0 +1,21 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: external-https-gateway
+  namespace: gateway-infra
+spec:
+  gatewayClassName: gke-l7-global-external-managed
+  listeners:
+  - name: https
+    protocol: HTTPS
+    port: 443
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      options:
+        networking.gke.io/pre-shared-certs: nishiokatest-xyz-cert
+  addresses:
+    - type: NamedAddress
+      value: nishiokatest-ip

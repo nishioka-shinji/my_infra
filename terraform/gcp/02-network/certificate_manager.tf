@@ -1,5 +1,3 @@
-# Terraform configuration for Google Cloud Certificate Manager resources
-
 resource "google_certificate_manager_dns_authorization" "nishiokatest_dns_auth" {
   name        = "nishiokatest-dns-auth"
   domain      = "nishiokatest.xyz"

@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
   name: external-https-gateway
   namespace: gateway-infra
+  annotations:
+    networking.gke.io/certmap: nishiokatest-cert-map
 spec:
   gatewayClassName: gke-l7-global-external-managed
   listeners:
@@ -11,11 +13,7 @@ spec:
     port: 443
     allowedRoutes:
       namespaces:
-        from: All
-    tls:
-      mode: Terminate
-      options:
-        networking.gke.io/pre-shared-certs: nishiokatest-xyz-cert
+        from: atlantis
   addresses:
     - type: NamedAddress
       value: nishiokatest-ip

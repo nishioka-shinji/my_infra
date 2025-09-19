@@ -14,7 +14,10 @@ spec:
     hostname: atlantis.nishiokatest.xyz
     allowedRoutes:
       namespaces:
-        from: atlantis
+        from: Selector
+        selector:
+          matchLabels:
+            kubernetes.io/metadata.name: atlantis
   addresses:
     - type: NamedAddress
       value: nishiokatest-ip

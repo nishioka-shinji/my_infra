@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 - gateway.yaml
 - namespace.yaml
-- managed-certificate.yaml

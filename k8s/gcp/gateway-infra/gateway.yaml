@@ -11,6 +11,7 @@ spec:
   - name: https
     protocol: HTTPS
     port: 443
+    hostname: atlantis.nishiokatest.xyz
     allowedRoutes:
       namespaces:
         from: atlantis

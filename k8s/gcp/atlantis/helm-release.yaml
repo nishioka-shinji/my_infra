@@ -13,6 +13,9 @@ spec:
         kind: HelmRepository
         name: atlantis
   values:
+    serviceAccount:
+      annotations:
+        iam.gke.io/gcp-service-account: atlantis-terraform-executer@shinji-nishioka-test.iam.gserviceaccount.com
     ingress:
       enabled: false
     replicaCount: 1

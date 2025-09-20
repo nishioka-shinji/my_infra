@@ -4,4 +4,5 @@ resources:
 - atlantis-github-secret.sops.yaml
 - helm-release.yaml
 - helm-repository.yaml
+- http-route.yaml
 - namespace.yaml

@@ -15,9 +15,10 @@ spec:
   values:
     ingress:
       enabled: false
-    google:
-      existingSecret: oauth2-proxy-google-secret
-    configFile: |-
-      upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
+    config:
+      google:
+        existingSecret: oauth2-proxy-google-secret
+      configFile: |-
+        upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
     nodeSelector:
       cloud.google.com/gke-spot: "true"

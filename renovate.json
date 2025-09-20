@@ -13,7 +13,8 @@
       "matchPaths": [
         "terraform/**"
       ],
-      "automerge": true
+      "automerge": true,
+      "platformAutomerge": true
     }
   ]
 }

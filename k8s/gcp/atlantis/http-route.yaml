@@ -12,5 +12,5 @@ spec:
     - atlantis.nishiokatest.xyz
   rules:
   - backendRefs:
-    - name: atlantis
+    - name: oauth2-proxy
       port: 80

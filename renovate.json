@@ -7,5 +7,13 @@
     "managerFilePatterns": [
       "/k8s/.+\\.yaml$/"
     ]
-  }
+  },
+  "packageRules": [
+    {
+      "matchPaths": [
+        "terraform/**"
+      ],
+      "automerge": true
+    }
+  ]
 }

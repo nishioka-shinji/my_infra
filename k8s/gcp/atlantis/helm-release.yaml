@@ -19,6 +19,7 @@ spec:
     ingress:
       enabled: false
     replicaCount: 1
+    atlantisUrl: "https://atlantis.nishiokatest.xyz"
     nodeSelector:
       cloud.google.com/gke-spot: "true"
     githubApp:

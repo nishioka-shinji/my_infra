@@ -19,6 +19,7 @@ spec:
       google:
         adminEmail: s61nov11.shinji.nishioka@gmail.com
         existingSecret: oauth2-proxy-google-secret
+        useApplicationDefaultCredentials: true
       configFile: |-
         email_domains = [ "*" ]
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]

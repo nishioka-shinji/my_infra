@@ -16,8 +16,7 @@ spec:
     ingress:
       enabled: false
     config:
-      google:
-        existingSecret: oauth2-proxy-google-secret
+      existingSecret: oauth2-proxy-google-secret
       configFile: |-
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
     nodeSelector:

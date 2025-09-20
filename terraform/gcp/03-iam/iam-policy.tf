@@ -1,5 +1,11 @@
-resource "google_service_account_iam_member" "flux_sops_decryptor" {
-  service_account_id = google_service_account.flux_sops_decryptor.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:shinji-nishioka-test.svc.id.goog[flux-system/kustomize-controller]"
+resource "google_project_iam_member" "atlantis-terraform-executer" {
+  for_each = toset([
+    "roles/editor",
+    "roles/resourcemanager.projectIamAdmin",
+    "roles/iam.serviceAccountAdmin"
+  ])
+
+  project = data.google_project.project.id
+  role    = each.value
+  member  = "serviceAccount:${google_service_account.this["atlantis-terraform-executer"].email}"
 }

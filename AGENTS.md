@@ -12,6 +12,11 @@ Terraformのコードを記述する際は、以下の規約に従ってくだ�
 2.  **フォーマット**
     *   コードを変更した際は、必ず`terraform fmt`コマンドを実行して、コードを整形してください。
 
+## Kubernetesのコーディング規約
+
+1.  **kustomization.yamlのソート**
+    *   `kustomization.yaml`の`resources`セクションは、アルファベット順（昇順）でソートしてください。
+
 ## 一般的なガイドライン
 
 *   **コミットメッセージ**: Conventional Commitsの規約に従ってください。

@@ -4,6 +4,8 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 patches:
+  # FluxがSOPS decryptを実行するために必要なGCPサービスアカウントを指定。
+  # このサービスアカウントはTerraformで作成されています (see: terraform/gcp/03-iam/iam.tf)。
   - patch: |-
       apiVersion: v1
       kind: ServiceAccount

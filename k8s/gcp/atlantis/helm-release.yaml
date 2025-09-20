@@ -15,6 +15,8 @@ spec:
   values:
     serviceAccount:
       annotations:
+        # AtlantisがTerraformを実行するために必要なGCPサービスアカウントを指定。
+        # このサービスアカウントはTerraformで作成されています (see: terraform/gcp/03-iam/iam.tf)。
         iam.gke.io/gcp-service-account: atlantis-terraform-executer@shinji-nishioka-test.iam.gserviceaccount.com
     ingress:
       enabled: false

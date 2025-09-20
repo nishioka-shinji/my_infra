@@ -5,6 +5,7 @@ locals {
     "container.googleapis.com",          # Kubernetes Engine API
     "gmail.googleapis.com",              # Gmail API
     "iam.googleapis.com",                # Identity and Access Management (IAM) API
+    "serviceusage.googleapis.com",       # Service Usage API
     "sts.googleapis.com"                 # Security Token Service API
   ]
 }

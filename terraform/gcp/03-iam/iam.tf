@@ -8,7 +8,7 @@ locals {
     atlantis-terraform-executer = {
       account_id   = "atlantis-terraform-executer"
       display_name = "Atlantis Terraform Executer"
-      member       = "serviceAccount:shinji-nishioka-test.svc.id.goog[atlantis/default]"
+      member       = "serviceAccount:shinji-nishioka-test.svc.id.goog[atlantis/atlantis]"
     }
   }
 }

@@ -16,12 +16,10 @@ spec:
     ingress:
       enabled: false
     config:
-      google:
-        adminEmail: s61nov11.shinji.nishioka@gmail.com
-        existingSecret: oauth2-proxy-google-secret
-        useApplicationDefaultCredentials: true
+      existingSecret: oauth2-proxy-google-secret
       configFile: |-
         email_domains = [ "*" ]
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
+        provider = "google"
     nodeSelector:
       cloud.google.com/gke-spot: "true"

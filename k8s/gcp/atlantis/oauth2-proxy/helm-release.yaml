@@ -16,7 +16,9 @@ spec:
     ingress:
       enabled: false
     config:
-      existingSecret: oauth2-proxy-google-secret
+      google:
+        adminEmail: s61nov11.shinji.nishioka@gmail.com
+        existingSecret: oauth2-proxy-google-secret
       configFile: |-
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
     nodeSelector:

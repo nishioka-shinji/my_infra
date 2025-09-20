@@ -22,3 +22,6 @@ spec:
       id: "1950417"
     vcsSecretName: atlantis-github-secret
     orgAllowlist: "github.com/nishioka-shinji/*"
+    serviceAccount:
+      annotations:
+        iam.gke.io/gcp-service-account: atlantis@shinji-nishioka-test.iam.gserviceaccount.com

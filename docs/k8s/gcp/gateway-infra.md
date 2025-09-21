@@ -24,7 +24,7 @@ graph TD
 
         subgraph "atlantis Namespace"
             HTTPRoute(HTTPRoute <br> atlantis-route)
-            AppService[<fa:fa-server> アプリケーションサービス <br> (例: oauth2-proxy)]
+            AppService[<fa:fa-server> アプリケーションサービス]
         end
     end
 

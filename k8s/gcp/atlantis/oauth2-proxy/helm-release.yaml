@@ -15,6 +15,10 @@ spec:
   values:
     ingress:
       enabled: false
+    authenticatedEmailsFile:
+      enabled: true
+      restricted_access: |-
+        s61nov11.shinji.nishioka@gmail.com
     config:
       existingSecret: oauth2-proxy-google-secret
       configFile: |-

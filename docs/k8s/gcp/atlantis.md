@@ -1,84 +1,80 @@
-# Atlantis on GKE
+# GKE上のAtlantis
+このドキュメントは、`k8s/gcp/atlantis/` 配下で管理されている、GKEにAtlantisをデプロイするために使用されるKubernetesリソースの概要を説明します。
 
-This document outlines the Kubernetes resources used to deploy Atlantis on GKE, managed under `k8s/gcp/atlantis/`.
+## アーキテクチャ概要
+この構成では、`oauth2-proxy` を使用してGoogle OAuth2経由で認証を行い、その後トラフィックをAtlantisアプリケーションに転送します。すべてのリソースは `atlantis` 名前空間内にデプロイされます。IngressはKubernetes Gateway APIの一部である `HTTPRoute` リソースによって管理されます。
 
-## Architecture Overview
-
-The setup uses `oauth2-proxy` to handle authentication via Google OAuth2 before forwarding traffic to the Atlantis application. All resources are deployed within the `atlantis` namespace. Ingress is managed by a `HTTPRoute` resource, which is part of the Kubernetes Gateway API.
-
-## Resource Relationship Diagram
-
+## リソース関連図
 ```mermaid
 graph TD
-    subgraph "User Interaction"
-        User[<fa:fa-user> User]
+    subgraph "ユーザー操作"
+        User[<fa:fa-user> ユーザー]
     end
 
-    subgraph "Gateway Infrastructure (namespace: gateway-infra)"
+    subgraph "ゲートウェイ基盤 (namespace: gateway-infra)"
         Gateway(external-https-gateway)
     end
 
-    subgraph "Atlantis Infrastructure (namespace: atlantis)"
+    subgraph "Atlantis基盤 (namespace: atlantis)"
         subgraph "Ingress"
             HTTPRoute(HTTPRoute <br> atlantis-route)
         end
 
-        subgraph "Authentication"
+        subgraph "認証"
             Oauth2Proxy[<fa:fa-shield-alt> oauth2-proxy]
         end
 
-        subgraph "Application"
+        subgraph "アプリケーション"
             Atlantis[<fa:fa-cogs> Atlantis]
         end
     end
 
-    subgraph "External Services"
+    subgraph "外部サービス"
       Google[<fa:fa-google> Google OAuth2]
       GitHub[<fa:fa-github> GitHub]
     end
 
 
-    User -- "1. HTTPS request to<br>atlantis.nishiokatest.xyz" --> Gateway
-    Gateway -- "2. Route matched" --> HTTPRoute
-    HTTPRoute -- "3. Forward to auth" --> Oauth2Proxy
-    Oauth2Proxy -- "4a. Redirect for Auth" --> Google
-    Google -- "4b. Auth Grant" --> Oauth2Proxy
-    Oauth2Proxy -- "5. Forward Authenticated Request" --> Atlantis
-    GitHub -- "Webhook Events (/events)" --> Oauth2Proxy
-    Oauth2Proxy -- "Bypass Auth" --> Atlantis
+    User -- "1. atlantis.nishiokatest.xyzへのHTTPSリクエスト" --> Gateway
+    Gateway -- "2. ルート一致" --> HTTPRoute
+    HTTPRoute -- "3. 認証へ転送" --> Oauth2Proxy
+    Oauth2Proxy -- "4a. 認証のためにリダイレクト" --> Google
+    Google -- "4b. 認証許可" --> Oauth2Proxy
+    Oauth2Proxy -- "5. 認証済みリクエストを転送" --> Atlantis
+    GitHub -- "Webhookイベント (/events)" --> Oauth2Proxy
+    Oauth2Proxy -- "認証をバイパス" --> Atlantis
 ```
 
-## Resource Breakdown
-
+## リソース詳細
 ### 1. Namespace (`namespace.yaml`)
-- Defines the `atlantis` namespace where all related resources are deployed.
+- 関連するすべてのリソースがデプロイされる `atlantis` 名前空間を定義します。
 
 ### 2. Ingress (`http-route.yaml`)
-- A `HTTPRoute` resource named `atlantis-route`.
-- Manages traffic for `atlantis.nishiokatest.xyz`.
-- It's associated with a `Gateway` named `external-https-gateway` in the `gateway-infra` namespace.
-- All incoming traffic is routed to the `oauth2-proxy` service.
+- `atlantis-route` という名前の `HTTPRoute` リソースです。
+- `atlantis.nishiokatest.xyz` のトラフィックを管理します。
+- `gateway-infra` 名前空間にある `external-https-gateway` という名前の `Gateway` に関連付けられています。
+- すべての着信トラフィックは `oauth2-proxy` サービスにルーティングされます。
 
-### 3. Authentication (`oauth2-proxy/`)
-- **Helm Release (`helm-release.yaml`):** Deploys `oauth2-proxy` using its official Helm chart.
-- **Function:** Acts as a forward authentication proxy. It authenticates users against Google and then forwards valid requests to the Atlantis service.
-- **Configuration:**
-    - Upstream is set to Atlantis's internal service URL: `http://atlantis.atlantis.svc.cluster.local`.
-    - Google is configured as the OIDC provider.
-    - Access is restricted to a specific list of Google accounts.
-    - It bypasses authentication for GitHub webhook paths (`POST /events`).
-    - Secrets (client ID, client secret, cookie secret) are managed via a Kubernetes secret named `oauth2-proxy-google-secret`.
-- **Health Check (`health-check-policy.yaml`):**
-    - A GKE-specific `HealthCheckPolicy` is configured.
-    - It targets the `oauth2-proxy` service and checks the `/ping` endpoint on port `4180`.
+### 3. 認証 (`oauth2-proxy/`)
+- **Helm Release (`helm-release.yaml`):** 公式のHelmチャートを使用して `oauth2-proxy` をデプロイします。
+- **機能:** フォワード認証プロキシとして機能します。Googleに対してユーザーを認証し、有効なリクエストをAtlantisサービスに転送します。
+- **設定:**
+    - UpstreamはAtlantisの内部サービスURLに設定されています: `http://atlantis.atlantis.svc.cluster.local`。
+    - GoogleがOIDCプロバイダーとして設定されています。
+    - アクセスは特定のGoogleアカウントリストに制限されています。
+    - GitHubのWebhookパス (`POST /events`) の認証をバイパスします。
+    - シークレット（クライアントID、クライアントシークレット、クッキーシークレット）は `oauth2-proxy-google-secret` という名前のKubernetes Secretを介して管理されます。
+- **ヘルスチェック (`health-check-policy.yaml`):**
+    - GKE固有の `HealthCheckPolicy` が設定されています。
+    - `oauth2-proxy` サービスを対象とし、ポート `4180` の `/ping` エンドポイントをチェックします。
 
-### 4. Core Application (`atlantis/`)
-- **Helm Release (`helm-release.yaml`):** Deploys Atlantis using the official Helm chart.
-- **Configuration:**
-    - **Service Account:** Uses a GCP Service Account (`atlantis-terraform-executer@...`) to grant Atlantis the necessary permissions to execute Terraform against GCP. This is achieved via GKE's Workload Identity feature.
-    - **VCS Integration:** Configured to work with a GitHub App. It uses a Kubernetes secret `atlantis-github-secret` to store the necessary credentials (App ID, private key, webhook secret).
-    - **URL:** The external URL is set to `https://atlantis.nishiokatest.xyz`.
-    - **Ingress:** The chart's built-in Ingress is disabled in favor of the `HTTPRoute` and `oauth2-proxy` setup.
+### 4. コアアプリケーション (`atlantis/`)
+- **Helm Release (`helm-release.yaml`):** 公式のHelmチャートを使用してAtlantisをデプロイします。
+- **設定:**
+    - **サービスアカウント:** GCPサービスアカウント (`atlantis-terraform-executer@...`) を使用して、AtlantisがGCPに対してTerraformを実行するために必要な権限を付与します。これはGKEのWorkload Identity機能によって実現されます。
+    - **VCS連携:** GitHub Appと連携するように設定されています。`atlantis-github-secret` という名前のKubernetes Secretを使用して、必要な認証情報（App ID、秘密鍵、Webhookシークレット）を保存します。
+    - **URL:** 外部URLは `https://atlantis.nishiokatest.xyz` に設定されています。
+    - **Ingress:** チャートに組み込まれているIngressは、`HTTPRoute` と `oauth2-proxy` の構成を優先して無効になっています。
 
-### 5. Orchestration (`kustomization.yaml`)
-- A root `kustomization.yaml` file ties all the above resources (`namespace`, `http-route`, `health-check-policy`, `atlantis` release, `oauth2-proxy` release) together for deployment via FluxCD.
+### 5. オーケストレーション (`kustomization.yaml`)
+- ルートの `kustomization.yaml` ファイルが、上記すべてのリソース（`namespace`, `http-route`, `health-check-policy`, `atlantis` release, `oauth2-proxy` release）をまとめてFluxCDによるデプロイを可能にします。

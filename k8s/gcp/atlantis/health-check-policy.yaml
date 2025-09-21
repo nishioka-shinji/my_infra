@@ -1,0 +1,16 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: atlantis-healthcheck
+  namespace: atlantis
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 80
+        requestPath: /ping
+  targetRef:
+    group: ""
+    kind: Service
+    name: oauth2-proxy

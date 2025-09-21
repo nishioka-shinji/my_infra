@@ -19,7 +19,7 @@ spec:
       existingSecret: oauth2-proxy-google-secret
       configFile: |-
         email_domains = [ "*" ]
-        upstreams = [ "http://atlantis.atlantis.svc.cluster.local/" ]
+        upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
         provider = "google"
     nodeSelector:
       cloud.google.com/gke-spot: "true"

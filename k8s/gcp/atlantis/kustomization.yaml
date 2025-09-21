@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
 - atlantis/
 - oauth2-proxy/
-- health_check_policy.yaml
+- healt-check-policy.yaml
 - http-route.yaml
 - namespace.yaml

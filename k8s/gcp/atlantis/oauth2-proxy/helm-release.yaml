@@ -21,6 +21,6 @@ spec:
         email_domains = [ "*" ]
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
         provider = "google"
-        skip_auth_routes = "post=/events"
+        skip_auth_routes = "POST=^/events$"
     nodeSelector:
       cloud.google.com/gke-spot: "true"

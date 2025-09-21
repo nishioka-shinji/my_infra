@@ -12,7 +12,7 @@ graph TD
     end
 
     subgraph "GKE Cluster"
-        GKE[<fa:fa-ship> GKE Autopilot Cluster<br>(my-autopilot-cluster)]
+        GKE["<fa:fa-ship> GKE Autopilot Cluster<br>(my-autopilot-cluster)"]
     end
 
     subgraph "Network Resources"

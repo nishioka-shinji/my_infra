@@ -17,3 +17,27 @@ spec:
       type: clusterIP
       tls:
         enabled: false
+    core:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    database:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    jobservice:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    nginx:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    portal:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    redis:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    registry:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"
+    trivy:
+      nodeSelector:
+        cloud.google.com/gke-spot: "true"

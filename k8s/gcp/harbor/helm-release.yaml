@@ -17,6 +17,7 @@ spec:
       type: clusterIP
       tls:
         enabled: false
+    existingSecretAdminPassword: harbor-secret
     core:
       nodeSelector:
         cloud.google.com/gke-spot: "true"

@@ -13,13 +13,12 @@ spec:
   - name: https
     protocol: HTTPS
     port: 443
-    hostname: atlantis.nishiokatest.xyz
     allowedRoutes:
       namespaces:
         from: Selector
         selector:
           matchLabels:
-            kubernetes.io/metadata.name: atlantis
+            shared-gateway-access: "true"
   addresses:
     - type: NamedAddress
       # Gatewayに紐付けるGCPの静的IPアドレス名を指定。

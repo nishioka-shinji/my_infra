@@ -28,3 +28,10 @@ spec:
       id: "1950417"
     vcsSecretName: atlantis-github-secret
     orgAllowlist: "github.com/nishioka-shinji/*"
+    resources:
+      requests:
+        cpu: 250m
+        memory: 500Mi
+      limits:
+        cpu: 250m
+        memory: 500Mi

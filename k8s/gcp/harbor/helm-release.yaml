@@ -13,6 +13,7 @@ spec:
         kind: HelmRepository
         name: harbor
   values:
+    externalURL: https://my-harbor.example.com
     expose:
       type: clusterIP
       tls:

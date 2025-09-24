@@ -10,7 +10,7 @@
   },
   "packageRules": [
     {
-      "matchPaths": [
+      "matchFileNames": [
         "terraform/**"
       ],
       "automerge": true,

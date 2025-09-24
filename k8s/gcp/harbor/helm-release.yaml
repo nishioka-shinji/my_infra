@@ -21,24 +21,89 @@ spec:
     core:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi
     database:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi
     jobservice:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi
     nginx:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi
     portal:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi
     redis:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi
     registry:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      registry:
+        resources:
+          requests:
+            cpu: 250m
+            memory: 500Mi
+          limits:
+            cpu: 250m
+            memory: 500Mi
+      controller:
+        resources:
+          requests:
+            cpu: 250m
+            memory: 500Mi
+          limits:
+            cpu: 250m
+            memory: 500Mi
     trivy:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi

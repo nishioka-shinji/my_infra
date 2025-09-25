@@ -5,3 +5,4 @@ resources:
 - atlantis/
 - gateway-infra/
 # - harbor/
+- oauth2-proxy/

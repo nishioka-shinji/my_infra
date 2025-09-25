@@ -30,15 +30,16 @@ spec:
           cpu: 250m
           memory: 500Mi
     database:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
-      resources:
-        requests:
-          cpu: 250m
-          memory: 500Mi
-        limits:
-          cpu: 250m
-          memory: 500Mi
+      internal:
+        nodeSelector:
+          cloud.google.com/gke-spot: "true"
+        resources:
+          requests:
+            cpu: 250m
+            memory: 500Mi
+          limits:
+            cpu: 250m
+            memory: 500Mi
     jobservice:
       nodeSelector:
         cloud.google.com/gke-spot: "true"
@@ -70,15 +71,16 @@ spec:
           cpu: 250m
           memory: 500Mi
     redis:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
-      resources:
-        requests:
-          cpu: 250m
-          memory: 500Mi
-        limits:
-          cpu: 250m
-          memory: 500Mi
+      internal:
+        nodeSelector:
+          cloud.google.com/gke-spot: "true"
+        resources:
+          requests:
+            cpu: 250m
+            memory: 500Mi
+          limits:
+            cpu: 250m
+            memory: 500Mi
     registry:
       nodeSelector:
         cloud.google.com/gke-spot: "true"

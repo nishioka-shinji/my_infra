@@ -30,16 +30,12 @@ jobs:
       - name: Set build matrix
         id: set-matrix
         run: |
-          echo "===================================================="
-          echo "${{ steps.changed-files.outputs.all_changed_files }}"
-          echo "===================================================="
           changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | sed 's#^docker/##' | cut -d'/' -f1 | sort -u | tr '\n' ' ' | xargs)
           if [ -z "$changed_dirs" ]; then
             json_array="[]"
           else
             json_array=$(echo $changed_dirs | xargs -n1 echo | jq -R . | jq -s . | jq -c .)
           fi
-          echo $json_array
           echo "services=${json_array}" >> $GITHUB_OUTPUT
 
   build-and-push:
@@ -71,6 +67,9 @@ jobs:
           tags: |
             type=sha
             type=raw,value=latest
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6

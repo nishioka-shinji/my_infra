@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'docker/*/Dockerfile'
+      - 'docker/**'
 
 jobs:
   prepare:
@@ -25,12 +25,12 @@ jobs:
         uses: tj-actions/changed-files@v47
         with:
           files: |
-            docker/*/Dockerfile
+            docker/**
 
       - name: Set build matrix
         id: set-matrix
         run: |
-          changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | xargs -n1 basename | sort -u | tr '\n' ' ')
+          changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | sed 's#^docker/##' | cut -d'/' -f1 | sort -u | tr '\n' ' ' | xargs)
           if [ -z "$changed_dirs" ]; then
             json_array="[]"
           else

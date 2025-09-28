@@ -27,6 +27,11 @@ spec:
     githubApp:
       id: "1950417"
     vcsSecretName: atlantis-github-secret
+    environmentSecrets:
+      - name: HARBOR_ADMIN_PASSWORD
+        secretKeyRef:
+          name: harbor-secret
+          key: HARBOR_ADMIN_PASSWORD
     orgAllowlist: "github.com/nishioka-shinji/*"
     resources:
       requests:

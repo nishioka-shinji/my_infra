@@ -37,7 +37,7 @@ jobs:
           if [ -z "$changed_dirs" ]; then
             json_array="[]"
           else
-            json_array=$(echo $changed_dirs | xargs -n1 echo | jq -R . | jq -s .)
+            json_array=$(echo $changed_dirs | xargs -n1 echo | jq -R . | jq -s . | jq -c .)
           fi
           echo $json_array
           echo "services=${json_array}" >> $GITHUB_OUTPUT

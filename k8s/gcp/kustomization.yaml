@@ -4,5 +4,5 @@ resources:
 - flux-system/
 - atlantis/
 - gateway-infra/
-# - harbor/
+- harbor/
 - oauth2-proxy/

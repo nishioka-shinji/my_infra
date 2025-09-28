@@ -3,7 +3,7 @@ resource "harbor_robot_account" "github-actions-pusher" {
   level  = "system"
   permissions {
     kind      = "project"
-    namespace = data.harbor_project.my_project.name
+    namespace = data.terraform_remote_state.my_project.outputs.project_name
     access {
       action   = "pull"
       resource = "repository"

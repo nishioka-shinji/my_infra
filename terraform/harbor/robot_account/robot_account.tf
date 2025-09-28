@@ -3,7 +3,7 @@ resource "harbor_robot_account" "github-actions-pusher" {
   level  = "system"
   permissions {
     kind      = "project"
-    namespace = "my_project"
+    namespace = data.harbor_project.my_project.name
     access {
       action   = "pull"
       resource = "repository"

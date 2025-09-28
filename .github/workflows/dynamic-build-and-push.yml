@@ -30,6 +30,9 @@ jobs:
       - name: Set build matrix
         id: set-matrix
         run: |
+          echo "===================================================="
+          echo "${{ steps.changed-files.outputs.all_changed_files }}"
+          echo "===================================================="
           changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | sed 's#^docker/##' | cut -d'/' -f1 | sort -u | tr '\n' ' ' | xargs)
           if [ -z "$changed_dirs" ]; then
             json_array="[]"

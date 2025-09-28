@@ -28,7 +28,7 @@ spec:
       id: "1950417"
     vcsSecretName: atlantis-github-secret
     environmentSecrets:
-      - name: HARBOR_ADMIN_PASSWORD
+      - name: TF_VAR_harbor_admin_password
         secretKeyRef:
           name: harbor-secret
           key: HARBOR_ADMIN_PASSWORD

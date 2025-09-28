@@ -30,8 +30,12 @@ jobs:
       - name: Set build matrix
         id: set-matrix
         run: |
-          changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | xargs -n1 basename)
-          json_array=$(echo "$changed_dirs" | jq -R . | jq -s .)
+          changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | xargs -n1 basename | sort -u | tr '\n' ' ')
+          if [ -z "$changed_dirs" ]; then
+            json_array="[]"
+          else
+            json_array=$(echo $changed_dirs | xargs -n1 echo | jq -R . | jq -s .)
+          fi
           echo "services=${json_array}" >> $GITHUB_OUTPUT
 
   build-and-push:

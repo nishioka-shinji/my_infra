@@ -1,0 +1,76 @@
+name: Dynamic Build and Push to Harbor
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docker/*/Dockerfile'
+
+jobs:
+  prepare:
+    name: Identify Changed Services
+    runs-on: ubuntu-latest
+    outputs:
+      services: ${{ steps.set-matrix.outputs.services }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          files: |
+            docker/*/Dockerfile
+
+      - name: Set build matrix
+        id: set-matrix
+        run: |
+          changed_dirs=$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | xargs -n1 dirname | xargs -n1 basename)
+          json_array=$(echo "$changed_dirs" | jq -R . | jq -s .)
+          echo "services=${json_array}" >> $GITHUB_OUTPUT
+
+  build-and-push:
+    name: Build and Push Service
+    needs: prepare
+    if: needs.prepare.outputs.services != '[]'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        service: ${{ fromJson(needs.prepare.outputs.services) }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Log in to Harbor
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.HARBOR_URL }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.HARBOR_URL }}/${{ secrets.HARBOR_PROJECT }}/${{ matrix.service }}
+          tags: |
+            type=sha
+            type=raw,value=latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./docker/${{ matrix.service }}
+          file: ./docker/${{ matrix.service }}/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

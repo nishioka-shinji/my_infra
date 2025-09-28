@@ -39,6 +39,7 @@ jobs:
           else
             json_array=$(echo $changed_dirs | xargs -n1 echo | jq -R . | jq -s .)
           fi
+          echo $json_array
           echo "services=${json_array}" >> $GITHUB_OUTPUT
 
   build-and-push:

@@ -25,7 +25,8 @@ spec:
     nodeSelector:
       cloud.google.com/gke-spot: "true"
     githubApp:
-      id: "2031417"
+      id: 2031417
+      installationId: 87921337
     vcsSecretName: atlantis-github-secret
     environmentSecrets:
       - name: TF_VAR_harbor_admin_password

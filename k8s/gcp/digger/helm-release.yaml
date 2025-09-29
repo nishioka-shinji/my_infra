@@ -36,6 +36,17 @@ spec:
           memory: 500Mi
       ingress:
         enabled: false
+      secret:
+        httpBasicAuthUsername: "admin"
+        httpBasicAuthPassword: "password"
+        bearerAuthToken: "token"
+        hostname: "https://digger.nishiokatest.xyz"
+        githubOrg: "AKASHI-rb"
+        githubAppID: ""
+        githubAppClientID: ""
+        githubAppClientSecret: ""
+        githubAppKeyFile: ""
+        githubWebhookSecret: ""
     postgres:
       enabled: true
       secret:

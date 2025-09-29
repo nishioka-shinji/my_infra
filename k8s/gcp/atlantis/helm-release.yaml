@@ -33,6 +33,14 @@ spec:
         secretKeyRef:
           name: harbor-secret
           key: HARBOR_ADMIN_PASSWORD
+      - name: TF_VAR_server_id
+        secretKeyRef:
+          name: akashi-rb-discord-secret
+          key: TF_VAR_server_id
+      - name: TF_VAR_discord_token
+        secretKeyRef:
+          name: akashi-rb-discord-secret
+          key: TF_VAR_discord_token
     orgAllowlist: "github.com/nishioka-shinji/*,github.com/AKASHI-rb/*"
     resources:
       requests:

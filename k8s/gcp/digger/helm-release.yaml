@@ -43,43 +43,8 @@ spec:
       ingress:
         enabled: false
       secret:
-        httpBasicAuthUsername: "admin"
-        httpBasicAuthPassword: "password"
-        bearerAuthToken: "token"
-        hostname: "https://digger.nishiokatest.xyz"
-        githubOrg: "AKASHI-rb"
-        githubAppID: "2034313"
-        githubAppClientID: "Iv23liTzgyvVNzylkXef"
-        githubAppClientSecret: "4942a18c27f6dd17af60fea20ef2e77da111967c"
-        githubAppKeyFile: |-
-          -----BEGIN RSA PRIVATE KEY-----
-          MIIEowIBAAKCAQEAw+P4bHTZhHhfbHQ2J3Or4ExMYeTM4wkCFF0But4n8kJFU9KV
-          U7P/3+jSTYkjkidejCbVt7o0WRrMgAPU0v6b0FeQta1d+C0GF5vNQ7PznJ4wexqO
-          LMvaBKeERWJUsNy0cmeWAHjBrahvkm7RtzwIq2BE0F4z2eflLDPRJ1AoQhdLCV4O
-          tSqbxtrmWY2b5Tf+11BbgLE3DqCuDdiD99cg9J8KxSmI5VUesLF+A587mt6C95Mu
-          7MGQblOINDiDgxgerHsxKUgAC3FzFL7AlVQk3N5sy4beigx3BdXjdkBJZV8597WC
-          pJLC7V9qhJAHUMW4HGeUYaZyFm1uAy1YuvYILQIDAQABAoIBAAs2+fn7lphm68+h
-          t5f6n1RwCc9w8entkhjoWjkAjvjnomByJeps27FN+vxFZavwZRFRB9tE5cpUJnEN
-          xxltSi5bVQWRr1eN/FNNsCq4GrJUvCHQG2OlKA4sKP5v6rlVaV9DXusX/r6abgjM
-          H2WGIljtYgMr4XwQMqadMNQ3Wpat9QxWLCa9yLtKtL0DLIRZ86XgkZ0glN8heWim
-          +SQV7KPNEiMRZMae7VSehDb0kEZPkcpARYR1SRvlrs/1TlpCYQX4ucBsU6j5Q/Vf
-          rTXygD78fkInXqDgQ0mA1sVp5DLIMPrykM2x8WMrRSZoVQyR7OSZFCxdQCClHE1J
-          18hHM2ECgYEA6R1r4f/Ckko6kq0oDnBIvfWg7Huuc/dQuiaI+6yFgSEFl3GooLTe
-          41YNrW2oKkKDvwy3oNA3ITFcbHOfwl2H615FijmxQjZICs0nr6Dt+AL9Te1VATI2
-          x9QBl+vaB3E1pp/cYOoeZwBD7HRe3K51FuQL52h4glFqcvnYS0W1oxsCgYEA1x8J
-          ERTL9k8WOgm93+lNrydD7/7bUzaJxnQcpY+c5qsXIog1l2dW2WgGAm4Qxl5elE4P
-          bQnKdsyarRt4qkBCd4MJdS+VXwpRdpB8JMRiekJbk8U/dRIK5JER9N71tEMCkGZY
-          DpsndTtkEVOAn6fX5hjWcAN0CzSNSXlbQbbSblcCgYAkrRtXIE01hPY4M4QU2Xeo
-          Y2fhLQhieGu8DeoJZrhOe6qMjDZSqoJS1CwsuA74LyTZPx/47iluUHzRF1PwWZTT
-          5C4etDr+RtoI0QRIbpJiLd46j3eLS6IwyFtD0rin6Rje0VHz8YG9BN6q6hguskf7
-          xP9WdipXnoWX91UfaqVMNwKBgHwiop7Cu3fk51SSbokZHgTmyaNiE7oPDK4CLs2y
-          872AGReKNjKqJUnLZzxbuz5dEoLOEMTBE54+LzuZUKYd8rz4VqrSzIVNdPjQI3Ms
-          CA+43xOEjTvHL5X5yLzfNDXTPVWKWWIEUl6p6PK+lsiKmGFlD8kPlRUqPCWb6/cd
-          wox9AoGBAOhxdup9cue/xgPjzrdJhLFzBMe0gBfumkqQ6FMzyBlg0B0I+jMf5Kds
-          XJchwPkAhmL8hRmTzTv1Qgwjti5ZJNh2rim0AtOoYzWCWIqY7BSbDsv4Zb28z6p9
-          ojmArR362T1e4lBC+kod+HML6KrExlS9mOFhR9dd55kCXt7YDccs
-          -----END RSA PRIVATE KEY-----
-        githubWebhookSecret: "ca2d8fd8fa7d3d8640449a30946f1b8abe849fdd"
+        useExistingSecret: true
+        existingSecretName: digger-digger-backend-secret
     postgres:
       enabled: true
       secret:

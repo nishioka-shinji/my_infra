@@ -25,3 +25,15 @@ spec:
           memory: 500Mi
       ingress:
         enabled: false
+    postgres:
+      enabled: true
+      secret:
+        useExistingSecret: false
+        password: "password"
+      resources:
+        requests:
+          cpu: 250m
+          memory: 500Mi
+        limits:
+          cpu: 250m
+          memory: 500Mi

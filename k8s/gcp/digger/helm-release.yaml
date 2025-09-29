@@ -23,6 +23,12 @@ spec:
             target:
               kind: StatefulSet
               name: digger-digger-backend-postgres
+          - patch: |-
+              - op: remove
+                path: /data/GITHUB_APP_PRIVATE_KEY
+            target:
+              kind: Secret
+              name: digger-digger-backend-secret
   values:
     digger:
       nodeSelector:

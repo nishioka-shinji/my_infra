@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: digger
-  namespace: atlantis
+  namespace: digger
 spec:
   interval: 1h
   url: https://diggerhq.github.io/helm-charts

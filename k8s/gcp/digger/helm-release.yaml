@@ -25,6 +25,9 @@ spec:
               name: digger-digger-backend-postgres
   values:
     digger:
+      image:
+        repository: registry.digger.dev/diggerhq/digger_backend
+        tag: "v0.6.126"
       nodeSelector:
         cloud.google.com/gke-spot: "true"
       resources:

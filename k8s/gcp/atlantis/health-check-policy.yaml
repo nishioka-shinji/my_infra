@@ -2,7 +2,7 @@ apiVersion: networking.gke.io/v1
 kind: HealthCheckPolicy
 metadata:
   name: oauth2-proxy-healthcheck
-  namespace: oauth2-proxy
+  namespace: atlantis
 spec:
   default:
     config:

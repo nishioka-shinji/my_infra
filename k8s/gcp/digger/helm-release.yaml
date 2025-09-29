@@ -12,6 +12,17 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: digger
+  postRenderers:
+    - kustomize:
+        patches:
+          - patch: |-
+              - op: add
+                path: /spec/template/spec/nodeSelector
+                value:
+                  cloud.google.com/gke-spot: "true"
+            target:
+              kind: StatefulSet
+              name: digger-digger-backend-postgres
   values:
     digger:
       nodeSelector:

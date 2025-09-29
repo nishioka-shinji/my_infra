@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: oauth2-proxy
-  namespace: oauth2-proxy
+  namespace: atlantis
 spec:
   interval: 30m
   chart:
@@ -20,7 +20,7 @@ spec:
       restricted_access: |-
         s61nov11.shinji.nishioka@gmail.com
     config:
-      existingSecret: oauth2-proxy-google-secret
+      existingSecret: google-secret
       configFile: |-
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
         provider = "google"

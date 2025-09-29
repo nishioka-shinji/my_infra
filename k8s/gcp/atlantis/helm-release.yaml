@@ -32,7 +32,7 @@ spec:
         secretKeyRef:
           name: harbor-secret
           key: HARBOR_ADMIN_PASSWORD
-    orgAllowlist: "github.com/nishioka-shinji/*"
+    orgAllowlist: "github.com/nishioka-shinji/*,github.com/AKASHI-rb/*"
     resources:
       requests:
         cpu: 250m

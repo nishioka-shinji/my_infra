@@ -13,6 +13,11 @@ spec:
         kind: HelmRepository
         name: postgres-operator-charts
   values:
+    configKubernetes:
+      enable_pod_antiaffinity: true
+      pod_antiaffinity_preferred_during_scheduling: true
+      pod_antiaffinity_topology_key: "topology.kubernetes.io/zone"
+      spilo_fsgroup: "103"
     nodeSelector:
       cloud.google.com/gke-spot: "true"
     resources:

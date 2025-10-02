@@ -5,11 +5,9 @@ metadata:
   namespace: postgresql
 spec:
   interval: 30m
-  chart:
-    spec:
-      chart: oci://registry-1.docker.io/bitnamicharts/postgresql
-      version: "17.0.0"
-      interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: postgresql
   values:
     global:
       postgresql:

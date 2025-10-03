@@ -7,6 +7,9 @@ spec:
   teamId: "digger"
   volume:
     size: 1Gi
+    selector:
+      matchLabels:
+        cloud.google.com/gke-spot: "true"
   numberOfInstances: 2
   users:
     zalando:  # database owner

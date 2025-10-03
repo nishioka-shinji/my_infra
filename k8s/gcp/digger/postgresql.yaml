@@ -1,0 +1,16 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: digger-cluster
+  namespace: digger
+spec:
+  teamId: "digger"
+  volume:
+    size: 1Gi
+  numberOfInstances: 2
+  users:
+    zalando:  # database owner
+    - superuser
+    - createdb
+  postgresql:
+    version: "17"

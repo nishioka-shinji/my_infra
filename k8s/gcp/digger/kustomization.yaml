@@ -5,4 +5,5 @@ resources:
 - helm-repository.yaml
 - http-route.yaml
 - namespace.yaml
+- postgresql.yaml
 - secret.sops.yaml

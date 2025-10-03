@@ -14,3 +14,10 @@ spec:
     - createdb
   postgresql:
     version: "17"
+  resources:
+    requests:
+      cpu: 250m
+      memory: 1Gi
+    limits:
+      cpu: 250m
+      memory: 1Gi

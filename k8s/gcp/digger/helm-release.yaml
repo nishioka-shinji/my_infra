@@ -31,17 +31,3 @@ spec:
       secret:
         useExistingSecret: true
         existingSecretName: digger-digger-backend-secret
-      extraEnv:
-      - name: PGHOST
-        value: digger-cluster.digger.svc.cluster.local
-      - name: PGDATABASE
-        value: digger
-      - name: PGUSER
-        value: digger
-      - name: PGPASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: digger.digger-cluster.credentials.postgresql.acid.zalan.do
-            key: password
-      - name: PGSSLMODE
-        value: disable

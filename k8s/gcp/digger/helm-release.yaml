@@ -12,17 +12,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: digger
-  postRenderers:
-    - kustomize:
-        patches:
-          - patch: |-
-              - op: add
-                path: /spec/template/spec/nodeSelector
-                value:
-                  cloud.google.com/gke-spot: "true"
-            target:
-              kind: StatefulSet
-              name: digger-digger-backend-postgres
   values:
     digger:
       image:
@@ -42,15 +31,17 @@ spec:
       secret:
         useExistingSecret: true
         existingSecretName: digger-digger-backend-secret
-    postgres:
-      enabled: true
-      secret:
-        useExistingSecret: false
-        password: "password"
-      resources:
-        requests:
-          cpu: 250m
-          memory: 500Mi
-        limits:
-          cpu: 250m
-          memory: 500Mi
+      extraEnv:
+      - name: PGHOST
+        value: digger-cluster.digger.svc.cluster.local
+      - name: PGDATABASE
+        value: digger
+      - name: PGUSER
+        value: digger
+      - name: PGPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: digger.digger-cluster.credentials.postgresql.acid.zalan.do
+            key: password
+      - name: PGSSLMODE
+        value: disable

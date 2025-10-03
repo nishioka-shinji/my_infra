@@ -17,9 +17,16 @@ spec:
           - "true"
   numberOfInstances: 1
   users:
+    digger: []
     zalando:  # database owner
     - superuser
     - createdb
+  preparedDatabases:
+    digger:
+      defaultUsers: true
+      schemas:
+        public:
+          defaultUsers: true
   postgresql:
     version: "17"
   resources:

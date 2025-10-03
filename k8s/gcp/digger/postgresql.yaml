@@ -7,10 +7,16 @@ spec:
   teamId: "digger"
   volume:
     size: 1Gi
-    selector:
-      matchLabels:
-        cloud.google.com/gke-spot: "true"
-  numberOfInstances: 2
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: cloud.google.com/gke-spot
+            operator: In
+            values:
+            - "true"
+  numberOfInstances: 1
   users:
     zalando:  # database owner
     - superuser

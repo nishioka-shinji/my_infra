@@ -37,4 +37,4 @@ spec:
         user: "digger"
         database: "digger"
         host: "digger-cluster"
-        sslmode: "disable"
+        sslmode: "require"

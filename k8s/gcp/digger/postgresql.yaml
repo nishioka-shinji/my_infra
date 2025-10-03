@@ -20,6 +20,8 @@ spec:
     digger:  # database owner
     - superuser
     - createdb
+  databases:
+    digger: digger
   postgresql:
     version: "17"
   resources:

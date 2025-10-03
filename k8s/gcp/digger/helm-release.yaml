@@ -38,3 +38,4 @@ spec:
         database: "digger"
         host: "digger-cluster"
         sslmode: "require"
+        allow_dirty: true

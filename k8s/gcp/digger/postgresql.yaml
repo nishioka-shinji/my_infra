@@ -16,7 +16,7 @@ spec:
             operator: In
             values:
             - "true"
-  numberOfInstances: 2
+  numberOfInstances: 1
   users:
     zalando:  # database owner
     - superuser

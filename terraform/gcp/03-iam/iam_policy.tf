@@ -10,7 +10,7 @@ locals {
       role   = "roles/owner"
       member = local.atlantis_terraform_executer_sa
     }
-    digger-gcs-user = {
+    digger = {
       role   = "roles/storage.objectUser"
       member = local.digger_terraform_executer_sa
     }

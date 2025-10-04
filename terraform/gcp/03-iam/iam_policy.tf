@@ -6,16 +6,8 @@ locals {
 
   # IAMロールバインディング定義
   iam_bindings = {
-    atlantis-editor = {
-      role   = "roles/editor"
-      member = local.atlantis_terraform_executer_sa
-    }
-    atlantis-project-iam-admin = {
-      role   = "roles/resourcemanager.projectIamAdmin"
-      member = local.atlantis_terraform_executer_sa
-    }
-    atlantis-service-account-admin = {
-      role   = "roles/iam.serviceAccountAdmin"
+    atlantis = {
+      role   = "roles/owner"
       member = local.atlantis_terraform_executer_sa
     }
     # digger-gcs-user = {

@@ -9,12 +9,12 @@ locals {
       account_id   = "atlantis-terraform-executer"
       display_name = "Atlantis Terraform Executer"
       member       = "serviceAccount:shinji-nishioka-test.svc.id.goog[atlantis/atlantis]"
-    },
-    digger-terraform-executer = {
-      account_id   = "digger-terraform-executer"
-      display_name = "Digger Terraform Executer"
-      member       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.digger.name}/attribute.repository/AKASHI-rb/akashi-rb-infra"
     }
+    # digger-terraform-executer = {
+    #   account_id   = "digger-terraform-executer"
+    #   display_name = "Digger Terraform Executer"
+    #   member       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.digger.name}/attribute.repository/AKASHI-rb/akashi-rb-infra"
+    # }
   }
 }
 

@@ -2,7 +2,7 @@ locals {
   # Atlantis用のサービスアカウントメンバー定義
   atlantis_terraform_executer_sa = "serviceAccount:${google_service_account.this["atlantis-terraform-executer"].email}"
   # digger用のサービスアカウントメンバー定義
-  digger_terraform_executer_sa = "serviceAccount:${google_service_account.this["digger-terraform-executer"].email}"
+  # digger_terraform_executer_sa = "serviceAccount:${google_service_account.this["digger-terraform-executer"].email}"
 
   # IAMロールバインディング定義
   iam_bindings = {
@@ -18,10 +18,10 @@ locals {
       role   = "roles/iam.serviceAccountAdmin"
       member = local.atlantis_terraform_executer_sa
     }
-    digger-gcs-user = {
-      role   = "roles/storage.objectUser"
-      member = local.digger_terraform_executer_sa
-    }
+    # digger-gcs-user = {
+    #   role   = "roles/storage.objectUser"
+    #   member = local.digger_terraform_executer_sa
+    # }
   }
 }
 

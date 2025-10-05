@@ -24,12 +24,10 @@ spec:
       configFile: |-
         upstreams = [ "http://goldilocks-dashboard.goldilocks.svc.cluster.local" ]
         provider = "google"
-    nodeSelector:
-      cloud.google.com/gke-spot: "true"
     resources:
       requests:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 1m
+        memory: 13M
       limits:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 145m
+        memory: 610M

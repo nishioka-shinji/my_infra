@@ -14,23 +14,19 @@ spec:
         name: fairwinds-stable
   values:
     controller:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 26M
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 70m
+          memory: 223M
     dashboard:
       replicaCount: 1
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 53M
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 20m
+          memory: 456M

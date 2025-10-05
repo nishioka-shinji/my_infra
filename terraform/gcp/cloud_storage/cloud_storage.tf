@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "terraform-state" {
-  for_each = locals.terraform_projects
+  for_each = local.terraform_projects
   name     = "${each.key}-terraform-state"
   location = "asia-northeast2"
 

@@ -1,0 +1,16 @@
+apiVersion: networking.gke.io/v1
+kind: HealthCheckPolicy
+metadata:
+  name: oauth2-proxy-healthcheck
+  namespace: goldilocks
+spec:
+  default:
+    config:
+      type: HTTP
+      httpHealthCheck:
+        port: 4180
+        requestPath: /ping
+  targetRef:
+    group: ""
+    kind: Service
+    name: oauth2-proxy

@@ -1,0 +1,16 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: oauth2-proxy-route
+  namespace: goldilocks
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: external-https-gateway
+    namespace: gateway-infra
+  hostnames:
+    - goldilocks.nishiokatest.xyz
+  rules:
+  - backendRefs:
+    - name: oauth2-proxy
+      port: 80

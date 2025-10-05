@@ -4,3 +4,4 @@ metadata:
   name: goldilocks
   labels:
     shared-gateway-access: "true"
+    goldilocks.fairwinds.com/enabled: "true"

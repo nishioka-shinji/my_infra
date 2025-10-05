@@ -5,5 +5,5 @@ output "flux_sops_decryptor_email" {
 
 output "digger_workload_identity_pool_principal_set" {
   description = "The principal set for the Digger workload identity pool."
-  value       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.digger.name}/attribute.repository/AKASHI-rb/akashi-rb-infra"
+  value       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.digger.name}/attribute.repository/${local.github_repository}"
 }

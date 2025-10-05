@@ -2,7 +2,8 @@ locals {
   terraform_projects = {
     shinji-nishioka-test = {
       member = [
-        "user:s61nov11.shinji.nishioka@gmail.com"
+        "user:s61nov11.shinji.nishioka@gmail.com",
+        "serviceAccount:atlantis-terraform-executer@shinji-nishioka-test.iam.gserviceaccount.com"
       ]
     }
     akashi-rb = {

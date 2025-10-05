@@ -2,3 +2,8 @@ output "flux_sops_decryptor_email" {
   description = "The email of the service account used by Flux for SOPS decryption."
   value       = google_service_account.this["flux-sops-decryptor"].email
 }
+
+output "digger_workload_identity_pool_principal_set" {
+  description = "The name of the workload identity pool for Digger"
+  value       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.digger.name}/attribute.repository/AKASHI-rb/akashi-rb-infra"
+}

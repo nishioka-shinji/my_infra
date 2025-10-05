@@ -4,3 +4,4 @@ metadata:
   name: digger
   labels:
     shared-gateway-access: "true"
+    goldilocks.fairwinds.com/enabled: "true"

@@ -13,12 +13,10 @@ spec:
         kind: HelmRepository
         name: postgres-operator-charts
   values:
-    nodeSelector:
-      cloud.google.com/gke-spot: "true"
     resources:
       requests:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 1m
+        memory: 41M
       limits:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 3m
+        memory: 61M

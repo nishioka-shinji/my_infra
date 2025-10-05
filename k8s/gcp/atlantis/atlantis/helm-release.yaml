@@ -22,8 +22,6 @@ spec:
       enabled: false
     replicaCount: 1
     atlantisUrl: "https://atlantis.nishiokatest.xyz"
-    nodeSelector:
-      cloud.google.com/gke-spot: "true"
     githubApp:
       id: "2031417"
       installationId: "87921337"
@@ -36,8 +34,8 @@ spec:
     orgAllowlist: "github.com/nishioka-shinji/*,github.com/AKASHI-rb/*"
     resources:
       requests:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 1m
+        memory: 373M
       limits:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 2m
+        memory: 478M

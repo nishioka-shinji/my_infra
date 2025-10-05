@@ -7,14 +7,6 @@ spec:
   teamId: "digger"
   volume:
     size: 1Gi
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: cloud.google.com/gke-spot
-          operator: In
-          values:
-          - "true"
   numberOfInstances: 1
   users:
     digger:  # database owner
@@ -26,8 +18,8 @@ spec:
     version: "17"
   resources:
     requests:
-      cpu: 250m
-      memory: 500Mi
+      cpu: 4m
+      memory: 107M
     limits:
-      cpu: 250m
-      memory: 500Mi
+      cpu: 9m
+      memory: 169M

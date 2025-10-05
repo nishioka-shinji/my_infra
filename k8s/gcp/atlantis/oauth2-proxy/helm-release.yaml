@@ -25,13 +25,10 @@ spec:
         upstreams = [ "http://atlantis.atlantis.svc.cluster.local" ]
         provider = "google"
         skip_auth_routes = "POST=^/events$"
-    nodeSelector:
-      cloud.google.com/gke-spot: "true"
     resources:
       requests:
-        cpu: 250m
-        memory: 500Mi
+        cpu: 1m
+        memory: 11M
       limits:
-        cpu: 250m
-        memory: 500Mi
-# Adding resources
+        cpu: 2m
+        memory: 15M

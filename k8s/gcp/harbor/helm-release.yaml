@@ -20,93 +20,77 @@ spec:
         enabled: false
     existingSecretAdminPassword: harbor-secret
     core:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 77M
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 3m
+          memory: 90M
     database:
       internal:
-        nodeSelector:
-          cloud.google.com/gke-spot: "true"
         resources:
           requests:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 15m
+            memory: 79M
           limits:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 20m
+            memory: 114M
     jobservice:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 3m
+          memory: 32M
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 5m
+          memory: 37M
     nginx:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 11M
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 2m
+          memory: 13M
     portal:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 8389k
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 14M
     redis:
       internal:
-        nodeSelector:
-          cloud.google.com/gke-spot: "true"
         resources:
           requests:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 4m
+            memory: 8389k
           limits:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 5m
+            memory: 11M
     registry:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       registry:
         resources:
           requests:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 1m
+            memory: 15M
           limits:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 2m
+            memory: 20M
       controller:
         resources:
           requests:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 1m
+            memory: 21M
           limits:
-            cpu: 250m
-            memory: 500Mi
+            cpu: 2m
+            memory: 25M
     trivy:
-      nodeSelector:
-        cloud.google.com/gke-spot: "true"
       resources:
         requests:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 1m
+          memory: 11M
         limits:
-          cpu: 250m
-          memory: 500Mi
+          cpu: 2m
+          memory: 142M

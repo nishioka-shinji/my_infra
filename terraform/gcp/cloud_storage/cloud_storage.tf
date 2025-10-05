@@ -16,5 +16,5 @@ moved {
 resource "google_storage_bucket_iam_member" "editor_access" {
   bucket = google_storage_bucket.terraform-state["akashi-rb"].name
   role   = "roles/storage.objectAdmin"
-  member = data.terraform_remote_state.digger_workload_identity_pool_principal_set.outputs.value
+  member = data.terraform_remote_state.digger_workload_identity_pool_principal_set.outputs.digger_workload_identity_pool_principal_set
 }

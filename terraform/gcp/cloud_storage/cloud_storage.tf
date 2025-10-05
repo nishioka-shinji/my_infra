@@ -12,7 +12,7 @@ resource "google_storage_bucket" "terraform-state" {
 }
 
 resource "google_storage_bucket_iam_binding" "this" {
-  for_each = locals.terraform_projects
+  for_each = local.terraform_projects
 
   bucket  = google_storage_bucket.terraform-state[each.key].name
   role    = "roles/storage.objectAdmin"

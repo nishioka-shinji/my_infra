@@ -41,4 +41,4 @@ spec:
         memory: 478M
     # 突然エラー出るため、応急処置
     extraAnnotations:
-      examples: []
+      examples: {}

@@ -5,6 +5,6 @@ resources:
 # - digger/
 - flux-system/
 - gateway-infra/
-# - goldilocks/
+- goldilocks/
 # - harbor/
 # - zalando/

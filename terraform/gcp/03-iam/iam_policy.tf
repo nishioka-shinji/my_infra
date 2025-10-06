@@ -8,6 +8,10 @@ locals {
       role   = "roles/owner"
       member = local.atlantis_terraform_executer_sa
     }
+    gke = {
+      role   = "roles/logging.logWriter"
+      member = "serviceAccount:513283484243-compute@developer.gserviceaccount.com"
+    }
   }
 }
 

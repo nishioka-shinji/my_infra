@@ -4,7 +4,7 @@ resources:
 # - atlantis/
 # - digger/
 - flux-system/
-# - gateway-infra/
+- gateway-infra/
 # - goldilocks/
 # - harbor/
 # - zalando/

@@ -31,11 +31,11 @@ spec:
       internal:
         resources:
           requests:
-            cpu: 15m
-            memory: 79M
+            cpu: 25m
+            memory: 80M
           limits:
-            cpu: 20m
-            memory: 114M
+            cpu: 25m
+            memory: 80M
     jobservice:
       resources:
         requests:

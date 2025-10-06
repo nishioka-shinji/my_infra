@@ -32,3 +32,10 @@ spec:
           name: harbor-secret
           key: HARBOR_ADMIN_PASSWORD
     orgAllowlist: "github.com/nishioka-shinji/*,github.com/AKASHI-rb/*"
+    resources:
+      requests:
+        cpu: 1m
+        memory: 373M
+      limits:
+        cpu: 2m
+        memory: 478M

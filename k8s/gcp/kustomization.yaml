@@ -6,5 +6,5 @@ resources:
 - flux-system/
 - gateway-infra/
 - goldilocks/
-- harbor/
+# - harbor/
 # - zalando/

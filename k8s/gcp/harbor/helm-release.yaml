@@ -73,11 +73,11 @@ spec:
       registry:
         resources:
           requests:
-            cpu: 1m
+            cpu: 15m
             memory: 15M
           limits:
-            cpu: 2m
-            memory: 20M
+            cpu: 15m
+            memory: 15M
       controller:
         resources:
           requests:

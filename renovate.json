@@ -15,6 +15,16 @@
       ],
       "automerge": true,
       "platformAutomerge": true
+    },
+    {
+      "matchFileNames": ["k8s/gcp/flux-system/gotk-components.yaml"],
+      "matchPackageNames": [
+        "ghcr.io/fluxcd/helm-controller",
+        "ghcr.io/fluxcd/kustomize-controller",
+        "ghcr.io/fluxcd/notification-controller",
+        "ghcr.io/fluxcd/source-controller"
+      ],
+      "enabled": false
     }
   ]
 }

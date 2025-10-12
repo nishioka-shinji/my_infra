@@ -23,74 +23,74 @@ spec:
       resources:
         requests:
           cpu: 1m
-          memory: 77M
+          memory: 56M
         limits:
           cpu: 3m
-          memory: 90M
+          memory: 70M
     database:
       internal:
         resources:
           requests:
-            cpu: 25m
-            memory: 80M
+            cpu: 15m
+            memory: 79M
           limits:
-            cpu: 25m
-            memory: 80M
+            cpu: 15m
+            memory: 99M
     jobservice:
       resources:
         requests:
-          cpu: 3m
-          memory: 32M
+          cpu: 2m
+          memory: 17M
         limits:
-          cpu: 5m
-          memory: 37M
+          cpu: 4m
+          memory: 21M
     nginx:
       resources:
         requests:
           cpu: 1m
-          memory: 11M
+          memory: 6292k
         limits:
           cpu: 2m
-          memory: 13M
+          memory: 7341k
     portal:
       resources:
         requests:
           cpu: 1m
-          memory: 8389k
+          memory: 4195k
         limits:
-          cpu: 1m
-          memory: 14M
+          cpu: 2m
+          memory: 5243k
     redis:
       internal:
         resources:
           requests:
-            cpu: 4m
-            memory: 8389k
+            cpu: 3m
+            memory: 6292k
           limits:
             cpu: 5m
-            memory: 11M
+            memory: 8389k
     registry:
       registry:
         resources:
           requests:
-            cpu: 15m
-            memory: 15M
+            cpu: 1m
+            memory: 7341k
           limits:
-            cpu: 15m
-            memory: 15M
+            cpu: 2m
+            memory: 12M
       controller:
         resources:
           requests:
             cpu: 1m
-            memory: 21M
+            memory: 12M
           limits:
             cpu: 2m
-            memory: 25M
+            memory: 14M
     trivy:
       resources:
         requests:
           cpu: 1m
-          memory: 11M
+          memory: 5243k
         limits:
           cpu: 2m
-          memory: 142M
+          memory: 8389k

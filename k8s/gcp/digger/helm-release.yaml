@@ -20,10 +20,10 @@ spec:
       resources:
         requests:
           cpu: 1m
-          memory: 52M
+          memory: 31M
         limits:
           cpu: 2m
-          memory: 61M
+          memory: 72M
       ingress:
         enabled: false
       secret:

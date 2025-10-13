@@ -4,3 +4,6 @@ creation_rules:
     # SOPSでファイルを暗号化するために使用するGCP KMSキーを指定。
     # このKMSキーはTerraformで作成されています (see: terraform/gcp/kms/kms.tf)。
     gcp_kms: projects/shinji-nishioka-test/locations/asia-northeast2/keyRings/sops/cryptoKeys/sops-key
+stores:
+  yaml:
+    indent: 2

@@ -8,7 +8,6 @@ spec:
   volume:
     size: 1Gi
   numberOfInstances: 1
-  minAvailable: 0
   users:
     digger:  # database owner
     - superuser

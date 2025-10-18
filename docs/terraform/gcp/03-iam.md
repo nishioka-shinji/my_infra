@@ -2,23 +2,30 @@
 このドキュメントは、`terraform/gcp/03-iam/` 配下で管理されている、IAM関連リソースの概要を説明します。
 
 ## 概要
-このTerraform構成は、主に以下の2つの目的のためのGoogleサービスアカウント(GSA)と、それに関連するIAM権限を設定します。
+このTerraform構成は、主に以下の3つの目的のためのGoogleサービスアカウント(GSA)と、それに関連するIAM権限を設定します。
 - **Atlantis:** Terraformコードを自動的に実行するためのサービスアカウント。
 - **Flux:** Kubernetesクラスタ内のリソースを管理し、SOPSで暗号化されたシークレットを復号するためのサービスアカウント。
+- **Digger:** GitHub Actions経由でTerraformコードを実行するためのサービスアカウント。
 
-これらのサービスアカウントは、Kubernetesサービスアカウント(KSA)とWorkload Identityを利用して連携し、GCPリソースへの安全なアクセスを実現します。
+これらのサービスアカウントは、Kubernetesサービスアカウント(KSA)やGitHub ActionsとWorkload Identityを利用して連携し、GCPリソースへの安全なアクセスを実現します。
 
 ## リソース関連図
 ```mermaid
 graph TD
+    subgraph "GitHub"
+        direction LR
+        GH_Actions["<fa:fa-github> GitHub Actions Runner"]
+    end
+
     subgraph "GCP Project"
         direction LR
         subgraph "IAM & Admin"
             GSA_Atlantis["<fa:fa-robot> GSA: atlantis-terraform-executer"]
             GSA_Flux["<fa:fa-robot> GSA: flux-sops-decryptor"]
-            Role_Editor["<fa:fa-id-card> Role: Editor"]
-            Role_ProjectIAMAdmin["<fa:fa-id-card> Role: Project IAM Admin"]
-            Role_SAAdmin["<fa:fa-id-card> Role: Service Account Admin"]
+            GSA_GKE_Default["<fa:fa-robot> GSA: GKE Default"]
+            Role_Owner["<fa:fa-id-card> Role: Owner"]
+            Role_LogWriter["<fa:fa-id-card> Role: Logs Writer"]
+            WIP_Digger["<fa:fa-key> Workload Identity Pool: digger-pool"]
         end
     end
 
@@ -33,13 +40,15 @@ graph TD
     end
 
     %% GSAへのロール付与
-    GSA_Atlantis -- "is granted" --> Role_Editor
-    GSA_Atlantis -- "is granted" --> Role_ProjectIAMAdmin
-    GSA_Atlantis -- "is granted" --> Role_SAAdmin
+    GSA_Atlantis -- "is granted" --> Role_Owner
+    GSA_GKE_Default -- "is granted" --> Role_LogWriter
 
     %% Workload Identity (GSA <-> KSA)
-    KSA_Atlantis -- "impersonates (Workload Identity)" --> GSA_Atlantis
-    KSA_Flux -- "impersonates (Workload Identity)" --> GSA_Flux
+    KSA_Atlantis -- "impersonates" --> GSA_Atlantis
+    KSA_Flux -- "impersonates" --> GSA_Flux
+
+    %% Workload Identity (GitHub Actions <-> GSA)
+    GH_Actions -- "authenticates via OIDC" --> WIP_Digger
 ```
 
 ## リソース詳細
@@ -53,10 +62,15 @@ graph TD
   - `atlantis-terraform-executer` (GSA) <--> `atlantis/atlantis` (KSA)
   - `flux-sops-decryptor` (GSA) <--> `flux-system/kustomize-controller` (KSA)
 
-### 2. Atlantis用IAMポリシー (`iam-policy.tf`)
+### 2. IAMポリシー (`iam_policy.tf`)
 - **リソース:** `google_project_iam_member`
-- **説明:** `atlantis-terraform-executer`サービスアカウントに対して、プロジェクトレベルで複数のIAMロールを付与します。これにより、AtlantisはTerraformを通じてプロジェクト内のリソースを広範囲に作成・更新・削除する権限を持ちます。
+- **説明:** `for_each` を使用して、複数のサービスアカウントにプロジェクトレベルのIAMロールを付与します。
 - **付与されるロール:**
-  - `roles/editor` (編集者)
-  - `roles/resourcemanager.projectIamAdmin` (プロジェクト IAM 管理者)
-  - `roles/iam.serviceAccountAdmin` (サービス アカウント管理者)
+  - **`atlantis-terraform-executer` GSA:**
+    - `roles/owner` (オーナー): AtlantisがTerraformを通じてプロジェクト内の全リソースを管理できるよう、広範な権限を付与します。
+  - **GKE Default GSA:**
+    - `roles/logging.logWriter` (ログ書き込み): GKEクラスタのノードがGoogle Cloud Loggingにログを書き込むための権限を付与します。
+
+### 3. Digger用Workload Identity Pool (`iam_workload_identity_pool.tf`)
+- **リソース:** `google_iam_workload_identity_pool`, `google_iam_workload_identity_pool_provider`
+- **説明:** GitHub ActionsのOIDCトークンを信頼するWorkload Identity Poolとプロバイダーを設定します。これにより、特定のGitHubリポジトリ(`nishioka-shinji/my_infra`)からのActionsワークフローが、GCPサービスアカウントの権限を借用してGCP APIを安全に呼び出すことが可能になります。これはDiggerがTerraformコマンドを実行するために利用されます。

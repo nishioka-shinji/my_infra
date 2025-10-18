@@ -46,14 +46,9 @@
 
 Terraformのコードは`terraform/gcp/`配下の各ディレクトリで管理されています。
 
-インフラを変更する場合、対象のディレクトリに移動して`terraform`コマンドを実行してください。
+インフラの変更は、Pull Requestを作成することでAtlantisが自動的に`terraform plan`を実行します。
 
-**例: ネットワークの変更**
-```bash
-cd terraform/gcp/02-network/
-terraform plan
-terraform apply
-```
+Planの結果を確認し、問題がなければPull Request上で`atlantis apply`とコメントすることで`terraform apply`が実行されます。
 
 **注意:** コードを変更した後は、`terraform fmt`を実行してフォーマットを整えてください。
 

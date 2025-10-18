@@ -14,20 +14,26 @@ graph TD
     subgraph "Enabled APIs"
         AdminSDK["<fa:fa-cogs> Admin SDK API"]
         CertificateManager["<fa:fa-cogs> Certificate Manager API"]
+        GeminiForGoogleCloud["<fa:fa-cogs> Gemini for Google Cloud API"]
         CloudKMS["<fa:fa-cogs> Cloud KMS API"]
         KubernetesEngine["<fa:fa-cogs> Kubernetes Engine API"]
+        GeminiCloudAssist["<fa:fa-cogs> Gemini Cloud Assist API"]
         Gmail["<fa:fa-cogs> Gmail API"]
         IAM["<fa:fa-cogs> IAM API"]
+        CloudLogging["<fa:fa-cogs> Cloud Logging API"]
         ServiceUsage["<fa:fa-cogs> Service Usage API"]
         SecurityTokenService["<fa:fa-cogs> Security Token Service API"]
     end
 
     GCP -- "enables" --> AdminSDK
     GCP -- "enables" --> CertificateManager
+    GCP -- "enables" --> GeminiForGoogleCloud
     GCP -- "enables" --> CloudKMS
     GCP -- "enables" --> KubernetesEngine
+    GCP -- "enables" --> GeminiCloudAssist
     GCP -- "enables" --> Gmail
     GCP -- "enables" --> IAM
+    GCP -- "enables" --> CloudLogging
     GCP -- "enables" --> ServiceUsage
     GCP -- "enables" --> SecurityTokenService
 ```
@@ -39,10 +45,13 @@ graph TD
 - **有効化されるAPIリスト:**
   - `admin.googleapis.com` (Admin SDK API)
   - `certificatemanager.googleapis.com` (Certificate Manager API)
+  - `cloudaicompanion.googleapis.com` (Gemini for Google Cloud API)
   - `cloudkms.googleapis.com` (Cloud Key Management Service API)
   - `container.googleapis.com` (Kubernetes Engine API)
+  - `geminicloudassist.googleapis.com` (Gemini Cloud Assist API)
   - `gmail.googleapis.com` (Gmail API)
   - `iam.googleapis.com` (Identity and Access Management (IAM) API)
+  - `logging.googleapis.com` (Cloud Logging API)
   - `serviceusage.googleapis.com` (Service Usage API)
   - `sts.googleapis.com` (Security Token Service API)
 

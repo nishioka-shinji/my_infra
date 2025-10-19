@@ -23,27 +23,27 @@ spec:
       resources:
         requests:
           cpu: 1m
-          memory: 56M
+          memory: 69M
         limits:
           cpu: 3m
-          memory: 70M
+          memory: 78M
     database:
       internal:
         resources:
           requests:
             cpu: 15m
-            memory: 79M
+            memory: 81M
           limits:
-            cpu: 20m
-            memory: 99M
+            cpu: 15m
+            memory: 90M
     jobservice:
       resources:
         requests:
           cpu: 2m
-          memory: 17M
-        limits:
-          cpu: 4m
           memory: 21M
+        limits:
+          cpu: 3m
+          memory: 25M
     nginx:
       resources:
         requests:
@@ -59,13 +59,13 @@ spec:
           memory: 4195k
         limits:
           cpu: 2m
-          memory: 5243k
+          memory: 4195k
     redis:
       internal:
         resources:
           requests:
-            cpu: 3m
-            memory: 6292k
+            cpu: 4m
+            memory: 7341k
           limits:
             cpu: 5m
             memory: 8389k
@@ -85,7 +85,7 @@ spec:
             memory: 12M
           limits:
             cpu: 2m
-            memory: 14M
+            memory: 13M
     trivy:
       resources:
         requests:
@@ -93,4 +93,4 @@ spec:
           memory: 5243k
         limits:
           cpu: 2m
-          memory: 8389k
+          memory: 7341k

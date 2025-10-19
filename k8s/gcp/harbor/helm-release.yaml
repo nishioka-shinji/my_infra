@@ -72,13 +72,13 @@ spec:
     registry:
       registry:
         resources:
-          # Goldilocks推奨値の２倍を設定
+          # Goldilocks推奨値の4倍を設定
           requests:
-            cpu: 2m
-            memory: 24M
-          limits:
             cpu: 4m
-            memory: 28M
+            memory: 48M
+          limits:
+            cpu: 8m
+            memory: 56M
       controller:
         resources:
           requests:

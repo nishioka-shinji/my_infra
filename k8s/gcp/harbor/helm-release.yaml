@@ -74,10 +74,10 @@ spec:
         resources:
           requests:
             cpu: 1m
-            memory: 7341k
+            memory: 12M
           limits:
             cpu: 2m
-            memory: 12M
+            memory: 14M
       controller:
         resources:
           requests:

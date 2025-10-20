@@ -30,12 +30,13 @@ spec:
     database:
       internal:
         resources:
+          # Goldilocks推奨値の2倍を設定
           requests:
-            cpu: 15m
-            memory: 81M
+            cpu: 30m
+            memory: 170M
           limits:
-            cpu: 20m
-            memory: 90M
+            cpu: 30m
+            memory: 170M
     jobservice:
       resources:
         requests:

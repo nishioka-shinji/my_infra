@@ -48,10 +48,10 @@ spec:
       resources:
         requests:
           cpu: 1m
-          memory: 6292k
+          memory: 9438k
         limits:
           cpu: 2m
-          memory: 7341k
+          memory: 141M
     portal:
       resources:
         requests:

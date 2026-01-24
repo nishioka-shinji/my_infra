@@ -8,6 +8,11 @@
       "/k8s/.+\\.yaml$/"
     ]
   },
+  "flux": {
+    "managerFilePatterns": [
+      "/k8s/.+\\.yaml$/"
+    ]
+  },
   "packageRules": [
     {
       "matchFileNames": [
@@ -17,7 +22,9 @@
       "platformAutomerge": true
     },
     {
-      "matchFileNames": ["k8s/gcp/flux-system/gotk-components.yaml"],
+      "matchFileNames": [
+        "k8s/gcp/flux-system/gotk-components.yaml"
+      ],
       "matchPackageNames": [
         "ghcr.io/fluxcd/helm-controller",
         "ghcr.io/fluxcd/kustomize-controller",

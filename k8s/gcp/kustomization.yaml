@@ -6,6 +6,8 @@ resources:
 - flux-system/
 - gateway-infra/
 - goldilocks/
-- harbor/
-- keycloak/
 - zalando/
+
+# 以下未使用
+# - harbor/
+# - keycloak/

@@ -17,16 +17,16 @@ spec:
       resources:
         requests:
           cpu: 1m
-          memory: 21M
+          memory: 31M
         limits:
-          cpu: 2m
-          memory: 26M
+          cpu: 3m
+          memory: 154M
     dashboard:
       replicaCount: 1
       resources:
         requests:
           cpu: 1m
-          memory: 8389k
+          memory: 33M
         limits:
           cpu: 2m
-          memory: 28M
+          memory: 155M

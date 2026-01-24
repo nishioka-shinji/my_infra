@@ -6,6 +6,7 @@ resources:
 - flux-system/
 - gateway-infra/
 - goldilocks/
+- playground/
 - zalando/
 
 # 以下未使用

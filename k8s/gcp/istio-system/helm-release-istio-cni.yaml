@@ -16,3 +16,5 @@ spec:
         namespace: istio-system
   values:
     profile: ambient
+    cni:
+      cniBinDir: /home/kubernetes/bin

@@ -16,7 +16,7 @@ spec:
     digger:
       image:
         repository: registry.digger.dev/diggerhq/digger_backend
-        tag: "v0.6.126"
+        tag: "v0.6.142"
       resources:
         requests:
           cpu: 1m

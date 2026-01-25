@@ -5,7 +5,6 @@ resources:
 - cloudflared/
 - digger/
 - flux-system/
-- gateway-infra/
 - goldilocks/
 - istio-ingress/
 - istio-system/

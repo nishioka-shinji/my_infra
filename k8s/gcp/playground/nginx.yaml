@@ -37,3 +37,23 @@ spec:
     port: 80
     targetPort: 80
   type: ClusterIP
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: nginx-route
+  namespace: playground
+spec:
+  parentRefs:
+  - name: istio-ingress-gateway
+    namespace: istio-ingress
+  hostnames:
+  - "nginx.akashi-rb.com"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: nginx
+      port: 80

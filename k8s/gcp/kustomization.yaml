@@ -7,6 +7,7 @@ resources:
 - flux-system/
 - gateway-infra/
 - goldilocks/
+- istio-ingress/
 - istio-system/
 - playground/
 - zalando/

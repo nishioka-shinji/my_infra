@@ -5,9 +5,8 @@ metadata:
   namespace: atlantis
 spec:
   parentRefs:
-  - kind: Gateway
-    name: external-https-gateway
-    namespace: gateway-infra
+  - name: istio-ingress-gateway
+    namespace: istio-ingress
   hostnames:
     - atlantis.nishiokatest.xyz
   rules:

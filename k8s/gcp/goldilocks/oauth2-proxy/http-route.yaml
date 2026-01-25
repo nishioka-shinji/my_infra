@@ -5,9 +5,8 @@ metadata:
   namespace: goldilocks
 spec:
   parentRefs:
-  - kind: Gateway
-    name: external-https-gateway
-    namespace: gateway-infra
+  - name: istio-ingress-gateway
+    namespace: istio-ingress
   hostnames:
     - goldilocks.nishiokatest.xyz
   rules:

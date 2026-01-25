@@ -5,8 +5,8 @@ metadata:
   namespace: harbor
 spec:
   parentRefs:
-  - name: external-https-gateway
-    namespace: gateway-infra
+  - name: istio-ingress-gateway
+    namespace: istio-ingress
   hostnames:
   - "harbor.nishiokatest.xyz"
   rules:

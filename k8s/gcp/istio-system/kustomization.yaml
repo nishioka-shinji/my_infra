@@ -4,6 +4,6 @@ resources:
 - helm-release-istio-base.yaml
 - helm-release-istio-cni.yaml
 - helm-release-istiod.yaml
-- helm-release-ztunnel.yaml
+# - helm-release-ztunnel.yaml
 - helm-repository.yaml
 - namespace.yaml

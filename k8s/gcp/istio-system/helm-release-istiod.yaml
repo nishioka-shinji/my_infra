@@ -16,3 +16,10 @@ spec:
         namespace: istio-system
   values:
     profile: ambient
+    resources:
+      requests:
+        cpu: 50m
+        memory: 256Mi
+      limits:
+        cpu: 50m
+        memory: 256Mi

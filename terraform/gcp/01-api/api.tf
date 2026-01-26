@@ -9,6 +9,7 @@ locals {
     "gmail.googleapis.com",              # Gmail API
     "iam.googleapis.com",                # Identity and Access Management (IAM) API
     "logging.googleapis.com",            # Cloud Logging API
+    "secretmanager.googleapis.com",      # Secret Manager API
     "serviceusage.googleapis.com",       # Service Usage API
     "sts.googleapis.com"                 # Security Token Service API
   ]

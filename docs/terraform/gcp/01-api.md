@@ -21,6 +21,7 @@ graph TD
         Gmail["<fa:fa-cogs> Gmail API"]
         IAM["<fa:fa-cogs> IAM API"]
         CloudLogging["<fa:fa-cogs> Cloud Logging API"]
+        SecretManager["<fa:fa-cogs> Secret Manager API"]
         ServiceUsage["<fa:fa-cogs> Service Usage API"]
         SecurityTokenService["<fa:fa-cogs> Security Token Service API"]
     end
@@ -34,6 +35,7 @@ graph TD
     GCP -- "enables" --> Gmail
     GCP -- "enables" --> IAM
     GCP -- "enables" --> CloudLogging
+    GCP -- "enables" --> SecretManager
     GCP -- "enables" --> ServiceUsage
     GCP -- "enables" --> SecurityTokenService
 ```
@@ -52,6 +54,7 @@ graph TD
   - `gmail.googleapis.com` (Gmail API)
   - `iam.googleapis.com` (Identity and Access Management (IAM) API)
   - `logging.googleapis.com` (Cloud Logging API)
+  - `secretmanager.googleapis.com` (Secret Manager API)
   - `serviceusage.googleapis.com` (Service Usage API)
   - `sts.googleapis.com` (Security Token Service API)
 

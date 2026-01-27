@@ -12,6 +12,10 @@ locals {
       role   = "roles/logging.logWriter"
       member = "serviceAccount:513283484243-compute@developer.gserviceaccount.com"
     }
+    secret_access_nishioka = {
+      role   = "roles/secretmanager.secretAccessor"
+      member = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository_owner/nishioka-shinji"
+    }
   }
 }
 

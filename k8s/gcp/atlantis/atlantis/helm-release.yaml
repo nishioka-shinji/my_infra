@@ -34,8 +34,8 @@ spec:
     orgAllowlist: "github.com/nishioka-shinji/*,github.com/AKASHI-rb/*"
     resources:
       requests:
-        cpu: 1m
-        memory: 513M
+        cpu: 2m
+        memory: 378M
       limits:
-        cpu: 15m
-        memory: 532M
+        cpu: 30m
+        memory: 595M

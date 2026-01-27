@@ -19,7 +19,7 @@ resource "google_secret_manager_secret_iam_member" "jules_api_key_access" {
   project   = data.google_project.project.id
   secret_id = "Jules_Api_Key"
   role      = "roles/secretmanager.secretAccessor"
-  member    = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository_owner/nishioka-shinji"
+  member    = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/nishioka-shinji/my_infra"
 }
 
 resource "google_project_iam_member" "this" {

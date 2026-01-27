@@ -10,7 +10,7 @@ locals {
       member = [
         "user:s61nov11.shinji.nishioka@gmail.com",
         # AKASHI-rb/akashi-rb-infraのGithub Actions
-        data.terraform_remote_state.digger_workload_identity_pool_principal_set.outputs.digger_workload_identity_pool_principal_set
+        data.terraform_remote_state.akashi_rb_infra_principal_set.outputs.akashi_rb_infra_principal_set
       ]
     }
   }

@@ -1,7 +1,7 @@
 locals {
   github_owners = {
-    "akashi_rb"       = "AKASHI-rb"
-    "nishioka_shinji" = "nishioka-shinji"
+    "akashi-rb"       = "AKASHI-rb"
+    "nishioka-shinji" = "nishioka-shinji"
   }
 }
 

@@ -15,8 +15,9 @@ locals {
   }
 }
 
+# Secretそのものは手動作成してある
 resource "google_secret_manager_secret_iam_member" "jules_api_key_access" {
-  project   = data.google_project.project.id
+  project   = data.google_project.project.name
   secret_id = "Jules_Api_Key"
   role      = "roles/secretmanager.secretAccessor"
   member    = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/nishioka-shinji/my_infra"
@@ -28,4 +29,9 @@ resource "google_project_iam_member" "this" {
   project = data.google_project.project.id
   role    = each.value.role
   member  = each.value.member
+}
+
+import {
+  to = google_secret_manager_secret_iam_member.jules_api_key_access
+  id = "projects/shinji-nishioka-test/secrets/Jules_Api_Key roles/secretmanager.secretAccessor　principalSet://iam.googleapis.com/projects/513283484243/locations/global/workloadIdentityPools/github-pool/attribute.repository/nishioka-shinji/my_infra"
 }

@@ -7,6 +7,7 @@ locals {
 resource "google_container_cluster" "primary" {
   name     = "my-standard-cluster"
   location = "asia-northeast2-a"
+  min_master_version = "1.34.3-gke.1051003"
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
   remove_default_node_pool = true
@@ -54,6 +55,7 @@ resource "google_container_node_pool" "primary_node_pool" {
   cluster    = google_container_cluster.primary.name
   location   = google_container_cluster.primary.location
   node_count = 1
+  version    = "1.34.3-gke.1051003"
 
   # 自動スケーリングは無効化
   management {

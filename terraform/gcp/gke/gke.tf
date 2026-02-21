@@ -18,8 +18,12 @@ resource "google_container_cluster" "primary" {
     channel = "REGULAR"
   }
 
+  logging_config {
+    enable_components = []
+  }
+
   monitoring_config {
-    enable_components = ["SYSTEM_COMPONENTS"]
+    enable_components = []
   }
 
   network    = data.terraform_remote_state.network.outputs.network.name

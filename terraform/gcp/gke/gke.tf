@@ -2,12 +2,13 @@ locals {
   secondary_ranges_map = {
     for range in data.terraform_remote_state.network.outputs.subnet.secondary_ip_range : range.range_name => range
   }
+  gke_version = "1.35.0-gke.2745000"
 }
 
 resource "google_container_cluster" "primary" {
-  name     = "my-standard-cluster"
-  location = "asia-northeast2-a"
-  min_master_version = "1.34.3-gke.1051003"
+  name               = "my-standard-cluster"
+  location           = "asia-northeast2-a"
+  min_master_version = local.gke_version
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
   remove_default_node_pool = true
@@ -55,7 +56,7 @@ resource "google_container_node_pool" "primary_node_pool" {
   cluster    = google_container_cluster.primary.name
   location   = google_container_cluster.primary.location
   node_count = 1
-  version    = "1.34.3-gke.1051003"
+  version    = local.gke_version
 
   # 自動スケーリングは無効化
   management {

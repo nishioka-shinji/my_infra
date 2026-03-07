@@ -1,0 +1,5 @@
+version: 3
+delete_source_branch_on_merge: true
+parallel_plan: true
+parallel_apply: false
+abort_on_execution_order_fail: true

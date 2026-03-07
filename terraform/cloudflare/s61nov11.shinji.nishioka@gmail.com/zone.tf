@@ -6,7 +6,7 @@ resource "cloudflare_zone" "this" {
 
   name = each.value
   account = {
-    id = "59e80e25c95fb00ff987a1b8af46bd52"
+    id = local.account_id
   }
 }
 

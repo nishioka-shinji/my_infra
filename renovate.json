@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "rebaseWhen": "conflicted",
   "kubernetes": {
     "managerFilePatterns": [
       "/k8s/.+\\.yaml$/"
@@ -18,6 +19,7 @@
       "matchFileNames": [
         "terraform/**"
       ],
+      "additionalBranchPrefix": "{{parentDir}}-",
       "automerge": true,
       "platformAutomerge": true
     },

@@ -2,7 +2,7 @@ locals {
   secondary_ranges_map = {
     for range in data.terraform_remote_state.network.outputs.subnet.secondary_ip_range : range.range_name => range
   }
-  gke_version = "1.35.0-gke.2232000"
+  gke_version = "1.35.0-gke.2398002"
 }
 
 resource "google_container_cluster" "primary" {

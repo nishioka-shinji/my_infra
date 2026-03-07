@@ -2,7 +2,7 @@ resource "cloudflare_dns_record" "nishiokatest_xyz" {
   zone_id = cloudflare_zone.this["nishiokatest.xyz"].id
   name    = "*.nishiokatest.xyz"
   type    = "CNAME"
-  content = "90137deb-48e6-44f7-a59c-77b4da2117e9.cfargotunnel.com"
+  content = "${cloudflare_zero_trust_tunnel_cloudflared.this.id}.cfargotunnel.com"
   ttl     = 1
   proxied = true
 }

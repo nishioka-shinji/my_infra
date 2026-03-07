@@ -31,6 +31,10 @@ spec:
         secretKeyRef:
           name: harbor-secret
           key: HARBOR_ADMIN_PASSWORD
+      - name: TF_VAR_cloudflare_api_token
+        secretKeyRef:
+          name: cloudflare-secret
+          key: cloudflare_api_token
     orgAllowlist: "github.com/nishioka-shinji/*,github.com/AKASHI-rb/*"
     resources:
       requests:

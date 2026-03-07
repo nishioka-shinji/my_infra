@@ -25,13 +25,3 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "this" {
     ]
   }
 }
-
-import {
-  id = "59e80e25c95fb00ff987a1b8af46bd52/90137deb-48e6-44f7-a59c-77b4da2117e9"
-  to = cloudflare_zero_trust_tunnel_cloudflared.this
-}
-
-import {
-  id = "59e80e25c95fb00ff987a1b8af46bd52/90137deb-48e6-44f7-a59c-77b4da2117e9"
-  to = cloudflare_zero_trust_tunnel_cloudflared_config.this
-}

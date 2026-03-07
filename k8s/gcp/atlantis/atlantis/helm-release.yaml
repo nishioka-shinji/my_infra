@@ -26,6 +26,10 @@ spec:
       id: "2031417"
       installationId: "87921337"
     vcsSecretName: github-secret
+    environment:
+      ATLANTIS_CHECKOUT_DEPTH: "1"
+      ATLANTIS_PARALLEL_POOL_SIZE: "2"
+      ATLANTIS_USE_TF_PLUGIN_CACHE: "false"
     environmentSecrets:
       - name: TF_VAR_harbor_admin_password
         secretKeyRef:

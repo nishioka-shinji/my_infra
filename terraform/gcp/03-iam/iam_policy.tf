@@ -30,8 +30,3 @@ resource "google_project_iam_member" "this" {
   role    = each.value.role
   member  = each.value.member
 }
-
-import {
-  to = google_secret_manager_secret_iam_member.jules_api_key_access
-  id = "projects/shinji-nishioka-test/secrets/Jules_Api_Key roles/secretmanager.secretAccessor　principalSet://iam.googleapis.com/projects/513283484243/locations/global/workloadIdentityPools/github-pool/attribute.repository/nishioka-shinji/my_infra"
-}

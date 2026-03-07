@@ -6,8 +6,3 @@ resource "cloudflare_dns_record" "nishiokatest_xyz" {
   ttl     = 1
   proxied = true
 }
-
-import {
-  id = "${cloudflare_zone.this["nishiokatest.xyz"].id}/d1f4729d5b48668ac17965584573c521"
-  to = cloudflare_dns_record.nishiokatest_xyz
-}

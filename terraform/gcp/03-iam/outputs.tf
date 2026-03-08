@@ -3,7 +3,7 @@ output "flux_sops_decryptor_email" {
   value       = google_service_account.this["flux-sops-decryptor"].email
 }
 
-output "akashi_rb_infra_principal_set" {
+output "akashi_rb_terraform_principal_set" {
   description = "The principal set for the GitHub workload identity pool."
-  value       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/AKASHI-rb/akashi-rb-infra"
+  value       = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/AKASHI-rb/akashi-rb-terraform"
 }

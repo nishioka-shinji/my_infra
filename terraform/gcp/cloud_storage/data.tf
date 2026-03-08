@@ -1,4 +1,4 @@
-data "terraform_remote_state" "akashi_rb_infra_principal_set" {
+data "terraform_remote_state" "akashi_rb_terraform_principal_set" {
   backend = "gcs"
   config = {
     bucket = "shinji-nishioka-test-terraform-state"

@@ -9,8 +9,8 @@ locals {
     akashi-rb = {
       member = [
         "user:s61nov11.shinji.nishioka@gmail.com",
-        # AKASHI-rb/akashi-rb-infraのGithub Actions
-        data.terraform_remote_state.akashi_rb_infra_principal_set.outputs.akashi_rb_infra_principal_set
+        # AKASHI-rb/akashi-rb-terraformのGithub Actions
+        data.terraform_remote_state.akashi_rb_terraform_principal_set.outputs.akashi_rb_terraform_principal_set
       ]
     }
   }

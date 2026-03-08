@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: harbor
   values:
-    externalURL: https://harbor.nishiokatest.xyz
+    externalURL: https://harbor.muso-lab.dev
     expose:
       type: clusterIP
       tls:

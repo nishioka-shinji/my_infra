@@ -8,7 +8,7 @@ spec:
   - name: istio-ingress-gateway
     namespace: istio-ingress
   hostnames:
-    - goldilocks.nishiokatest.xyz
+    - goldilocks.muso-lab.dev
   rules:
   - backendRefs:
     - name: oauth2-proxy

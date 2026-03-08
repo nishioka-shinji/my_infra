@@ -21,7 +21,7 @@ spec:
     ingress:
       enabled: false
     replicaCount: 1
-    atlantisUrl: "https://atlantis.nishiokatest.xyz"
+    atlantisUrl: "https://atlantis.muso-lab.dev"
     githubApp:
       id: "2031417"
       installationId: "87921337"

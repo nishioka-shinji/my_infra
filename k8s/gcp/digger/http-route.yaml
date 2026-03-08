@@ -8,7 +8,7 @@ spec:
   - name: istio-ingress-gateway
     namespace: istio-ingress
   hostnames:
-    - digger.nishiokatest.xyz
+    - digger.muso-lab.dev
   rules:
   - backendRefs:
     - name: digger-digger-backend-web

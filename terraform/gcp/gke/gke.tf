@@ -1,8 +1,3 @@
-data "google_container_engine_versions" "asia_northeast1" {
-  location       = "asia-northeast1"
-  version_prefix = "1.35."
-}
-
 locals {
   secondary_ranges_map = {
     for range in data.terraform_remote_state.network.outputs.subnet.secondary_ip_range : range.range_name => range
@@ -11,8 +6,9 @@ locals {
 
 resource "google_container_cluster" "primary" {
   name               = "my-standard-cluster"
-  location           = "asia-northeast2-a"
-  min_master_version = data.google_container_engine_versions.asia_northeast1.latest_master_version
+  location           = "asia-northeast2"
+  node_locations     = ["asia-northeast2-a", "asia-northeast2-c"]
+  min_master_version = data.google_container_engine_versions.asia_northeast2.latest_master_version
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
   remove_default_node_pool = true
@@ -64,9 +60,13 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_node_pool" {
-  name       = "my-spot-node-pool"
-  cluster    = google_container_cluster.primary.name
-  location   = google_container_cluster.primary.location
+  name     = "my-spot-node-pool"
+  cluster  = google_container_cluster.primary.name
+  location = google_container_cluster.primary.location
+  node_locations = [
+    "asia-northeast2-a",
+    "asia-northeast2-c"
+  ]
   node_count = 1
   # 自動スケーリングは無効化
   management {
@@ -75,7 +75,7 @@ resource "google_container_node_pool" "primary_node_pool" {
   }
 
   node_config {
-    machine_type = "t2d-standard-2"
+    machine_type = "t2d-standard-1"
     spot         = true
     disk_size_gb = 20
     disk_type    = "pd-standard"

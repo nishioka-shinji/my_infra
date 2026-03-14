@@ -7,6 +7,7 @@ locals {
 resource "google_container_cluster" "primary" {
   name               = "my-standard-cluster"
   location           = "asia-northeast2"
+  node_locations     = ["asia-northeast2-a", "asia-northeast2-c"]
   min_master_version = data.google_container_engine_versions.asia_northeast2.latest_master_version
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
@@ -64,7 +65,7 @@ resource "google_container_node_pool" "primary_node_pool" {
   location = google_container_cluster.primary.location
   node_locations = [
     "asia-northeast2-a",
-    "asia-northeast2-b"
+    "asia-northeast2-c"
   ]
   node_count = 1
   # 自動スケーリングは無効化
@@ -74,7 +75,7 @@ resource "google_container_node_pool" "primary_node_pool" {
   }
 
   node_config {
-    machine_type = "t2a-standard-1"
+    machine_type = "t2d-standard-1"
     spot         = true
     disk_size_gb = 20
     disk_type    = "pd-standard"

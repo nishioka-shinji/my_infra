@@ -1,6 +1,5 @@
 resource "cloudflare_zone" "this" {
   for_each = toset([
-    "nishiokatest.xyz",
     "muso-lab.dev"
   ])
 

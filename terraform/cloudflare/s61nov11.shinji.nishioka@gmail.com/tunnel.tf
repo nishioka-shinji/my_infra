@@ -10,11 +10,6 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "this" {
   config = {
     ingress = [
       {
-        hostname       = "*.nishiokatest.xyz"
-        origin_request = {}
-        service        = "http://istio-ingress-gateway-istio.istio-ingress.svc.cluster.local"
-      },
-      {
         hostname       = "*.muso-lab.dev"
         origin_request = {}
         service        = "http://istio-ingress-gateway-istio.istio-ingress.svc.cluster.local"

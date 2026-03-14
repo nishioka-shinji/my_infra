@@ -1,8 +1,3 @@
-data "google_container_engine_versions" "asia_northeast1" {
-  location       = "asia-northeast1"
-  version_prefix = "1.35."
-}
-
 locals {
   secondary_ranges_map = {
     for range in data.terraform_remote_state.network.outputs.subnet.secondary_ip_range : range.range_name => range
@@ -12,7 +7,7 @@ locals {
 resource "google_container_cluster" "primary" {
   name               = "my-standard-cluster"
   location           = "asia-northeast2"
-  min_master_version = data.google_container_engine_versions.asia_northeast1.latest_master_version
+  min_master_version = data.google_container_engine_versions.asia_northeast2.latest_master_version
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
   remove_default_node_pool = true

@@ -2,14 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - flux-system/
-- atlantis/
-- cloudflared/
-- digger/
-- goldilocks/
-- istio-ingress/
-- istio-system/
-- playground/
-- zalando/
+# - atlantis/
+# - cloudflared/
+# - digger/
+# - goldilocks/
+# - istio-ingress/
+# - istio-system/
+# - playground/
+# - zalando/
 
 # 以下未使用
 # - harbor/

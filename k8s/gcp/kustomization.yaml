@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - atlantis/
 - cloudflared/
-- digger/
+# - digger/
 - flux-system/
 - goldilocks/
 - istio-ingress/

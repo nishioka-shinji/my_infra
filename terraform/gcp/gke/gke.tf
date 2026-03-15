@@ -23,6 +23,9 @@ resource "google_container_cluster" "primary" {
 
   monitoring_config {
     enable_components = []
+    managed_prometheus {
+      enabled = false
+    }
   }
 
   network    = data.terraform_remote_state.network.outputs.network.name

@@ -2,19 +2,20 @@ locals {
   secondary_ranges_map = {
     for range in data.terraform_remote_state.network.outputs.subnet.secondary_ip_range : range.range_name => range
   }
+  release_channel = "REGULAR"
 }
 
 resource "google_container_cluster" "primary" {
   name               = "my-standard-cluster"
   location           = "asia-northeast2-a"
-  min_master_version = data.google_container_engine_versions.asia_northeast2.release_channel_latest_version
+  min_master_version = data.google_container_engine_versions.asia_northeast2.release_channel_latest_version[local.release_channel]
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
   remove_default_node_pool = true
   initial_node_count       = 1
 
   release_channel {
-    channel = "REGULAR"
+    channel = local.release_channel
   }
 
   logging_config {

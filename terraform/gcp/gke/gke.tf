@@ -7,7 +7,7 @@ locals {
 resource "google_container_cluster" "primary" {
   name               = "my-standard-cluster"
   location           = "asia-northeast2-a"
-  min_master_version = data.google_container_engine_versions.asia_northeast2.latest_master_version
+  min_master_version = data.google_container_engine_versions.asia_northeast2.release_channel_latest_version
 
   # デフォルトノードプールを無効にし、後ほど定義するカスタムノードプールのみを使用
   remove_default_node_pool = true

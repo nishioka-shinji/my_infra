@@ -73,7 +73,7 @@ resource "google_container_node_pool" "primary_node_pool" {
   }
 
   node_config {
-    machine_type = "e2-standard-2"
+    machine_type = "t2d-standard-2"
     spot         = true
     disk_size_gb = 20
     disk_type    = "pd-standard"

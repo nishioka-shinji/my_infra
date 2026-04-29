@@ -1,4 +1,4 @@
 [tools]
 k9s = "0.50.18"
 kubectl = "1.35.3"
-terraform = "1.14.9"
+terraform = "1.15.0"
